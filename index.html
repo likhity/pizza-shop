@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SunDevil Pizza</title>
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-Regular.woff2") format("woff2");
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Inter;
+      }
+      .links {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      a {
+        display: block;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        text-decoration: none;
+        color: #f8e010;
+        width: 300px;
+        height: 40px;
+        text-align: center;
+        background: #a34242;
+        padding: 1rem;
+        border-radius: 10rem;
+      }
+      a:hover {
+        background: #f8e010;
+        color: #a34242;
+      }
+    </style>
+  </head>
+  <body>
+    <h1
+      style="
+        color: #a34242;
+        font-size: 2rem;
+        font-weight: normal;
+        margin-top: 3rem;
+      "
+    >
+      SunDevil Pizza
+    </h1>
+    <div class="links">
+      <p style="font-size: 2rem">I am a...</p>
+      <a href="studentLoginPage.html">Student</a>
+
+      <a href="orderLoginPage.html">Order Processor</a>
+
+      <a href="chefLoginPage.html">Chef</a>
+    </div>
+  </body>
+</html>
