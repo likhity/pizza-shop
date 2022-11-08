@@ -4,10 +4,12 @@ const { requireChefAuth } = require("../middleware/authMiddleware");
 
 const router = Router();
 
-// check chef is authenticated for every request
+/**
+ * Auth middleware to check if user is authenticated
+ * and that the user is a Chef
+ */
 router.use(requireChefAuth);
 
-// chef routes
 // router.get("/order-list", chefController.order_list_get);
 // router.get("/order/:orderID", chefController.order_get);
 
