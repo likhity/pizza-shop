@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Status</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: 1.5rem;
+      }
+      .red {
+        color: red;
+      }
+      .green {
+        color: green;
+      }
+      .parent {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .button button {
+        font-size: 1.5rem;
+        padding: 1rem 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Order Status</h1>
+    <p>Current Status: <span class="status red">Order Sent</span></p>
+    <p id="ready-to-pick-up-text" class="green"></p>
+    <div class="parent">
+      <div class="summary">
+        <h3>Order Summary</h3>
+        <p>Pizza Type: Pepperoni</p>
+        <p>Toppings: Mushroom, Onion</p>
+        <p>Pick-Up Time: 3:00 AM</p>
+        <p>Special Instructions: I want a third of the pizza burnt.</p>
+      </div>
+      <div class="button">
+        <button id="cancel-button">Cancel</button>
+      </div>
+    </div>
+    <script>
+      const status = document.querySelector(".status");
+      const readyToPickUpText = document.getElementById(
+        "ready-to-pick-up-text"
+      );
+      const cancelButton = document.getElementById("cancel-button");
+      setTimeout(() => {
+        status.textContent = "Accepted";
+        cancelButton.disabled = true;
+        setTimeout(() => {
+          status.textContent = "Ready to Cook";
+          setTimeout(() => {
+            status.textContent = "Cooking";
+            setTimeout(() => {
+              status.textContent = "Ready To Pick Up";
+              status.classList.replace("red", "green");
+              readyToPickUpText.textContent = "Your order is ready to pick up.";
+            }, 5000);
+          });
+        }, 5000);
+      }, 5000);
+
+      cancelButton.addEventListener("click", () => {
+        window.location = "/customizePizzaPage.html";
+      });
+    </script>
+  </body>
+</html>

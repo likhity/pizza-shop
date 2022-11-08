@@ -28,11 +28,6 @@ const orderSchema = new Schema({
   specialInstructions: {
     type: String,
   },
-  canceled: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
 });
 
 const order = mongoose.model("order", orderSchema);

@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
-const orderRoutes = require("./routes/orderRoutes");
+const studentRoutes = require("./routes/studentRoutes");
+const orderProcessorRoutes = require("./routes/orderProcessorRoutes");
+const chefRoutes = require("./routes/chefRoutes");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
@@ -30,4 +32,6 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 app.use(authRoutes);
-app.use(orderRoutes);
+app.use("/student", studentRoutes);
+app.use("/orderprocessor", orderProcessorRoutes);
+app.use("/chef", chefRoutes);

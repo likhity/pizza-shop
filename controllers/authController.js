@@ -34,22 +34,35 @@ const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: jwtMaxAge });
 };
 
-module.exports.login = async (req, res) => {
-  const { userType, asuID, username, password } = req.body;
-  let user;
+module.exports.student_login_get = async (req, res) => {
+  res.render("student_login");
+};
+
+module.exports.student_login_post = async (req, res) => {
+  const { asuID } = req.body;
+
   try {
-    switch (userType) {
-      case "student":
-        user = await StudentUser.login(asuID);
-        break;
-      case "orderprocessor":
-        user = await OrderProcessor.login(username, password);
-        break;
-      case "chef":
-        user = await ChefUser.login(username, password);
-        break;
-    }
-    const token = createToken(user._id);
+    const student = await StudentUser.login(asuID);
+    const token = createToken(student._id);
+    res.cookie("jwt", token, { maxAge: jwtMaxAge * 1000, httpOnly: true });
+    res.status(200).json({ user: student._id });
+  } catch (err) {
+    console.log(err);
+    const error = handleErrors(err);
+    res.status(400).json({ error });
+  }
+};
+
+module.exports.orderprocessor_login_get = async (req, res) => {
+  res.render("orderprocessor_login");
+};
+
+module.exports.orderprocessor_login_post = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await OrderProcessor.login({ username, password });
+    const token = createToken(student._id);
     res.cookie("jwt", token, { maxAge: jwtMaxAge * 1000, httpOnly: true });
     res.status(200).json({ user: user._id });
   } catch (err) {
@@ -58,7 +71,25 @@ module.exports.login = async (req, res) => {
   }
 };
 
-module.exports.logout = async (req, res) => {
+module.exports.chef_login_get = async (req, res) => {
+  res.render("chef_login");
+};
+
+module.exports.chef_login_post = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await ChefUser.login({ username, password });
+    const token = createToken(student._id);
+    res.cookie("jwt", token, { maxAge: jwtMaxAge * 1000, httpOnly: true });
+    res.status(200).json({ user: user._id });
+  } catch (err) {
+    const error = handleErrors(err);
+    res.status(400).json({ error });
+  }
+};
+
+module.exports.logout = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.redirect("/");
 };
