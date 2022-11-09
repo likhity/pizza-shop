@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Login</title>
-    <script
-      crossorigin
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
-    ></script>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <h1>Welcome back, Devil.</h1>
@@ -21,16 +18,31 @@
       />
       <button type="submit">Login</button>
     </form>
+    <p class="error"></p>
     <script>
       const studentLoginForm = document.getElementById("student-login-form");
 
-      studentLoginForm.addEventListener("submit", (e) => {
+      studentLoginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         const asuID = studentLoginForm.asuID.value;
 
-        axios.post("/student/login", { asuID }).then((response) => {
-          console.log(response);
+        // make request to server to login. we will recieve a response.
+        const response = await fetch("/student/login", {
+          method: "POST",
+          body: JSON.stringify({ asuID }),
+          headers: { "Content-Type": "application/json" },
         });
+
+        // convert the response data into a readable json object
+        const data = await response.json();
+
+        if (data.error) {
+          document.querySelector(".error").textContent = data.error;
+        }
+
+        if (data.user) {
+          location.assign("/student/customize-pizza");
+        }
       });
     </script>
   </body>
