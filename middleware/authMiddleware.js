@@ -39,7 +39,7 @@ const requireOrderProcessorAuth = async (req, res, next) => {
       async (err, decodedToken) => {
         if (err) {
           console.log(err.message);
-          res.redirect("/orderprocessor_login");
+          res.redirect("/orderprocessor/login");
         } else {
           const user = await OrderProcessor.findById(decodedToken.id);
           res.locals.username = user.username;
@@ -48,7 +48,7 @@ const requireOrderProcessorAuth = async (req, res, next) => {
       }
     );
   } else {
-    res.redirect("/orderprocessor_login");
+    res.redirect("/orderprocessor/login");
   }
 };
 
@@ -63,7 +63,7 @@ const requireChefAuth = async (req, res, next) => {
       async (err, decodedToken) => {
         if (err) {
           console.log(err.message);
-          res.redirect("/chef_login");
+          res.redirect("/chef/login");
         } else {
           const user = await ChefUser.findById(decodedToken.id);
           res.locals.username = user.username;
@@ -72,7 +72,7 @@ const requireChefAuth = async (req, res, next) => {
       }
     );
   } else {
-    res.redirect("/chef_login");
+    res.redirect("/chef/login");
   }
 };
 

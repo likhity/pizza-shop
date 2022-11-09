@@ -35,7 +35,7 @@ const createToken = (id) => {
 };
 
 module.exports.student_login_get = async (req, res) => {
-  res.render("student_login");
+  res.render("login/student_login");
 };
 
 module.exports.student_login_post = async (req, res) => {
@@ -54,7 +54,7 @@ module.exports.student_login_post = async (req, res) => {
 };
 
 module.exports.orderprocessor_login_get = async (req, res) => {
-  res.render("orderprocessor_login");
+  res.render("login/orderprocessor_login");
 };
 
 module.exports.orderprocessor_login_post = async (req, res) => {
@@ -72,7 +72,7 @@ module.exports.orderprocessor_login_post = async (req, res) => {
 };
 
 module.exports.chef_login_get = async (req, res) => {
-  res.render("chef_login");
+  res.render("login/chef_login");
 };
 
 module.exports.chef_login_post = async (req, res) => {
