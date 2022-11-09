@@ -7,7 +7,9 @@ module.exports.new_orders_get = async (req, res) => {
     res.render("orderprocessor/NewOrdersPage");
 };
 module.exports.accepted_orders_get = async (req, res) => {};
-module.exports.finished_orders_get = async (req, res) => {};
+module.exports.finished_orders_get = async (req, res) => {
+  res.render("orderprocessor/FinishedOrdersPage");
+};
 module.exports.individual_new_order_get = async (req, res) => {
     res.render("orderprocessor/specificNewOrder");
 };
