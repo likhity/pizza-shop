@@ -5,23 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="customizePizza.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <p>Pizza Type</p>
     <br />
-    <input type="radio" name="pizzaType" value="" /> Pepperoni<br />
-    <input type="radio" name="pizzaType" value="" /> Vegetable<br />
-    <input type="radio" name="pizzaType" value="" /> Cheese<br />
-    <br />
-    <br />
-    <p>Toppings</p>
-    <input type="checkbox" name="topping" value="" /> Mushroom<br />
-    <input type="checkbox" name="topping" value="" /> Onion<br />
-    <input type="checkbox" name="topping" value="" /> Olive<br />
-    <input type="checkbox" name="topping" value="" /> Extra Cheese<br />
-
-    <form action="pickUpTimePage.html">
+      <form id="customize-pizza-form">
+        <input type="radio" name="pizzaType" value="Pepperoni"/>Pepperoni<br />
+        <input type="radio" name="pizzaType" value="Vegetable"/>Vegetable<br />
+        <input type="radio" name="pizzaType" value="Cheese"/>Cheese<br />
+        
+        <label for="toppings">Toppings</label>
+        <input type="checkbox" name="mushroom" value="" id="mushroom" /> Mushroom<br />
+        <input type="checkbox" name="onion" value="" id="onion"/> Onion<br />
+        <input type="checkbox" name="olive" value="" id="olive"/> Olive<br />
+        <input type="checkbox" name="extraCheese" value="" id="extraCheese"/> Extra Cheese<br />
+      </form>
+      <br />
+      <br />
+      <!-- two pizza diagrams change images based on selected toppings/pizzaType -->
+      <div class="pizzaDiagram">
+      <!-- image for each topping where visibility class goes invisiblie with CSS -->
+        <div class="toppingsDiagram">
+          <img src="/toppings/mushroom.png" id="mushroom-img" alt="topping" class="topping invisible">
+          <img src="/toppings/onions.png" id="onions-img" alt="topping" class="topping invisible">
+          <img src="/toppings/olives.png" id="olives-img" alt="topping" class="topping invisible">
+        </div>
+      <!-- only one image displayed for pizzaType -->
+        <div class="pizzaType">
+          <img src="/pizzaType/Cheese.png" alt="pizzaType">
+        </div>
+      </div>
+      
+      <form action="pickUpTimePage.html">
       <button type="next">NEXT</button>
-    </form>
+      </form>
   </body>
 </html>

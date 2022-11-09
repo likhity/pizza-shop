@@ -1,7 +1,11 @@
+
+//schema requires
 const Order = require("../models/Order");
 const AcceptedOrder = require("../models/AcceptedOrder");
 const FinishedOrder = require("../models/FinishedOrder");
 const StudentUser = require("../models/StudentUser");
+
+//idk what this is
 const ShortUniqueId = require("short-unique-id");
 
 module.exports.customize_pizza_get = (req, res) => {
@@ -32,6 +36,7 @@ module.exports.create_order_post = async (req, res) => {
     // every order will have a unique ID 10 characters long
     const orderID = new ShortUniqueId({ length: 10 });
 
+    //create order based off post request
     const newOrder = new Order({
       pickUpTime,
       studentID: asuID,

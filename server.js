@@ -31,7 +31,12 @@ mongoose
 app.get("/", (req, res) => {
   res.render("home");
 });
+
+
 app.use(authRoutes);
 app.use("/student", studentRoutes);
 app.use("/orderprocessor", orderProcessorRoutes);
 app.use("/chef", chefRoutes);
+
+//add 404 pages
+app.use

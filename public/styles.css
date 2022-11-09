@@ -5,3 +5,15 @@
 body {
   font-family: Inter;
 }
+
+.invisible {
+  visibility: hidden;
+}
+
+.toppingsDiagram {
+  z-index: 1;
+}
+
+.pizzaType {
+  z-index: 0;
+}

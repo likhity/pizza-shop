@@ -35,7 +35,7 @@ const createToken = (id) => {
 };
 
 module.exports.student_login_get = async (req, res) => {
-  res.render("student_login");
+  res.render("login/student_login");
 };
 
 module.exports.student_login_post = async (req, res) => {
