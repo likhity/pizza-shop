@@ -3,7 +3,9 @@ const AcceptedOrder = require("../models/AcceptedOrder");
 const FinishedOrder = require("../models/FinishedOrder");
 const OrderProcessor = require("../models/OrderProcessor");
 
-module.exports.new_orders_get = async (req, res) => {};
+module.exports.new_orders_get = async (req, res) => {
+    res.render("orderprocessor/NewOrdersPage");
+};
 module.exports.accepted_orders_get = async (req, res) => {};
 module.exports.finished_orders_get = async (req, res) => {};
 module.exports.individual_new_order_get = async (req, res) => {
