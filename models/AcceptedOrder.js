@@ -31,6 +31,7 @@ const acceptedOrderSchema = new Schema({
   orderStatus: {
     type: String,
     required: true,
+    default: "accepted",
   },
 });
 
