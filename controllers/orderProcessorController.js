@@ -11,12 +11,14 @@ module.exports.finished_orders_get = async (req, res) => {
   res.render("orderprocessor/FinishedOrdersPage");
 };
 module.exports.individual_new_order_get = async (req, res) => {
-    res.render("orderprocessor/specificNewOrder");
+  res.render("orderprocessor/specificNewOrder");
 };
 module.exports.individual_accepted_order_get = async (req, res) => {
   res.render("orderprocessor/specificAcceptedOrder");
 };
-module.exports.individual_finished_order_get = async (req, res) => {};
+module.exports.individual_finished_order_get = async (req, res) => {
+  res.render("orderprocessor/specificFinishedOrder");
+};
 
 module.exports.accept_order_post = async (req, res) => {
   try {
