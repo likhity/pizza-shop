@@ -17,6 +17,8 @@ app.use(cookieParser());
 
 // set view engine
 app.set("view engine", "ejs");
+//no need for app.set("views", "newfolderName");
+//since looks into views folders by default
 
 // database connection
 const dbURI = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.xwddugt.mongodb.net/${process.env.MONGODB_DATABASE_NAME}`;
@@ -31,6 +33,8 @@ mongoose
 app.get("/", (req, res) => {
   res.render("home");
 });
+
+
 app.use(authRoutes);
 app.use("/student", studentRoutes);
 app.use("/orderprocessor", orderProcessorRoutes);
