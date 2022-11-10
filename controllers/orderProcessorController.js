@@ -4,7 +4,7 @@ const FinishedOrder = require("../models/FinishedOrder");
 const OrderProcessor = require("../models/OrderProcessor");
 
 module.exports.new_orders_get = async (req, res) => {
-    res.render("orderprocessor/NewOrdersPage");
+  res.render("orderprocessor/NewOrdersPage");
 };
 module.exports.accepted_orders_get = async (req, res) => {};
 module.exports.finished_orders_get = async (req, res) => {
@@ -28,23 +28,23 @@ module.exports.accept_order_post = async (req, res) => {
     const newOrder = await Order.findOne({ orderID });
 
     // create new accepted order with the exact same order details
-    const newAcceptedOrder = new AcceptedOrder({ 
+    const newAcceptedOrder = new AcceptedOrder({
       pickUpTime: newOrder.pickUpTime,
       orderID: newOrder.orderID,
       studentID: newOrder.studentID,
       pizzaType: newOrder.pizzaType,
       toppings: newOrder.toppings,
       specialInstructions: newOrder.specialInstructions,
-     });
+    });
 
     //  save the new accepted order to the AcceptedOrders collection in the database
-     await newAcceptedOrder.save();
-     
+    await newAcceptedOrder.save();
+
     //  delete the order from the NewOrders list
-     await Order.deleteOne({ orderID });
+    await Order.deleteOne({ orderID });
 
     //  send response to client
-     res.status(200).json({ success: true });
+    res.status(200).json({ success: true });
   } catch (err) {
     res.status(400).json({ success: false });
   }
@@ -55,9 +55,8 @@ module.exports.order_status_get = async (req, res) => {
     const { orderID } = req.body;
 
     const order = await AcceptedOrder.findOne({ orderID });
-    
-    res.status(200).json({ success: true, status: order.orderStatus });
 
+    res.status(200).json({ success: true, status: order.orderStatus });
   } catch (err) {
     res.status(400).json({ success: false });
   }
