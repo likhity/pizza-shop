@@ -61,8 +61,8 @@ module.exports.orderprocessor_login_post = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = await OrderProcessor.login({ username, password });
-    const token = createToken(student._id);
+    const user = await OrderProcessor.login(username, password);
+    const token = createToken(user._id);
     res.cookie("jwt", token, { maxAge: jwtMaxAge * 1000, httpOnly: true });
     res.status(200).json({ user: user._id });
   } catch (err) {
@@ -80,7 +80,7 @@ module.exports.chef_login_post = async (req, res) => {
 
   try {
     const user = await ChefUser.login({ username, password });
-    const token = createToken(student._id);
+    const token = createToken(user._id);
     res.cookie("jwt", token, { maxAge: jwtMaxAge * 1000, httpOnly: true });
     res.status(200).json({ user: user._id });
   } catch (err) {
