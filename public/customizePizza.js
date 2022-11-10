@@ -1,20 +1,3 @@
-
-const customizePizzaForm = document.getElementById("customize-pizza-form");
-
-const PizzaViewer = new PizzaDisplay();
-
-customizePizzaForm.addEventListener("input", (e) => {
-  const checkedPizzaType = customizePizzaForm.querySelector("input[type='radio']:checked");
-  
-  const mushroom = customizePizzaForm.mushroom.checked
-  const extraCheese = customizePizzaForm.extraCheese.checked
-  const olive = customizePizzaForm.olive.checked
-  const onions = customizePizzaForm.onions.checked
-
-  PizzaViewer.setToppings(mushroom, extraCheese, olives, onions);
-  PizzaViewer.setPizzaType(checkedPizzaType.value);
-})
-
 class PizzaDisplay {
 
     constructor() {
@@ -55,11 +38,31 @@ class PizzaDisplay {
       document.getElementById("onions-img").classList.add("invisible");
     }
   }
+
+
+
   //pizzaType set
   setPizzaType(pizzaType) {
-    this.pizzaType = pizzaType
+    this.pizzaType = pizzaType //pizzaType is string
     //get html img of pizzaType, then change its src based on pizzaType
     const pizzaTypeImage = document.querySelector("img[alt='pizzaType']");
     pizzaTypeImage.src = `/pizzaType/${this.pizzaType}.png`;
   }
 }
+
+const customizePizzaForm = document.getElementById("customizePizzaForm");
+
+const PizzaViewer = new PizzaDisplay();
+
+customizePizzaForm.addEventListener("input", (e) => {
+
+  //sets each topping to T/F based on if its checked in
+  const mushroom = customizePizzaForm.mushroom.checked
+  const extraCheese = customizePizzaForm.extraCheese.checked
+  const olive = customizePizzaForm.olive.checked
+  const onions = customizePizzaForm.onions.checked
+
+  PizzaViewer.setToppings(mushroom, extraCheese, olive, onions);
+  console.log(customizePizzaForm.querySelector("input[type='radio']:checked").value);
+  PizzaViewer.setPizzaType(customizePizzaForm.querySelector("input[type='radio']:checked").value);
+})

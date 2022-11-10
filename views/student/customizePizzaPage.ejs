@@ -4,42 +4,58 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="customizePizza.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <title>customizePizza</title>
+    
+    <script src="/customizePizza.js" defer></script>
+    <link rel="stylesheet" href="/styles.css">
   </head>
-  <body>
-    <p>Pizza Type</p>
-    <br />
-      <form id="customize-pizza-form">
-        <input type="radio" name="pizzaType" value="Pepperoni"/>Pepperoni<br />
-        <input type="radio" name="pizzaType" value="Vegetable"/>Vegetable<br />
-        <input type="radio" name="pizzaType" value="Cheese"/>Cheese<br />
-        
-        <label for="toppings">Toppings</label>
-        <input type="checkbox" name="mushroom" value="" id="mushroom" /> Mushroom<br />
-        <input type="checkbox" name="onion" value="" id="onion"/> Onion<br />
-        <input type="checkbox" name="olive" value="" id="olive"/> Olive<br />
-        <input type="checkbox" name="extraCheese" value="" id="extraCheese"/> Extra Cheese<br />
-      </form>
-      <br />
-      <br />
+
+
+
+  <body >
+    <div class="entirePizzaPageDiv">
+
+
+        <div class="customizePizzaDivForm">
+          <form id="customizePizzaForm">
+
+            <div class="pizzaTypeDiv">
+              <p>Pizza Type</p>
+              <input type="radio" name="pizzaType" value="Pepperoni"/>Pepperoni<br />
+              <input type="radio" name="pizzaType" value="Vegetable"/>Vegetable<br />
+              <input type="radio" name="pizzaType" value="Cheese"/>Cheese<br />
+            </div>
+
+            <div class="toppingsOptionsDiv">
+              <p>Toppings</p>
+              <input type="checkbox" name="mushroom" value="" id="mushroom" /> Mushroom<br />
+              <input type="checkbox" name="onions" value="" id="onion"/> Onion<br />
+              <input type="checkbox" name="olive" value="" id="olive"/> Olive<br />
+              <input type="checkbox" name="extraCheese" value="" id="extraCheese"/> Extra Cheese<br />
+            </div>
+          </form>
+        </div>
+
+
       <!-- two pizza diagrams change images based on selected toppings/pizzaType -->
-      <div class="pizzaDiagram">
-      <!-- image for each topping where visibility class goes invisiblie with CSS -->
-        <div class="toppingsDiagram">
-          <img src="/toppings/mushroom.png" id="mushroom-img" alt="topping" class="topping invisible">
-          <img src="/toppings/onions.png" id="onions-img" alt="topping" class="topping invisible">
-          <img src="/toppings/olives.png" id="olives-img" alt="topping" class="topping invisible">
-        </div>
-      <!-- only one image displayed for pizzaType -->
-        <div class="pizzaType">
-          <img src="/pizzaType/Cheese.png" alt="pizzaType">
-        </div>
-      </div>
+
       
-      <form action="pickUpTimePage.html">
-      <button type="next">NEXT</button>
-      </form>
+        <!-- only one image displayed for pizzaType -->
+        <div class="pizzaDiagramDiv">
+          <img src="/pizzaType/Cheese.png" alt="pizzaType" class="pizzaType">
+
+
+          <img src="/toppings/mushroom.png" id="mushroom-img" alt="topping" class="topping mushroom invisible">
+          <img src="/toppings/onions.png" id="onions-img" alt="topping" class="topping onion invisible">
+          <img src="/toppings/olives.png" id="olives-img" alt="topping" class="topping olive invisible">
+
+            <!-- need to save object of pizza created to continue -->
+          <button class="next-btn" id="nextBtn"type="next">NEXT</button>
+
+
+         </div>
+    </div>
   </body>
+
+
 </html>

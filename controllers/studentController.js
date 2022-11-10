@@ -5,7 +5,6 @@ const AcceptedOrder = require("../models/AcceptedOrder");
 const FinishedOrder = require("../models/FinishedOrder");
 const StudentUser = require("../models/StudentUser");
 
-//idk what this is
 const ShortUniqueId = require("short-unique-id");
 
 module.exports.customize_pizza_get = (req, res) => {
