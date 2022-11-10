@@ -2,6 +2,7 @@
   font-family: "Inter";
   src: url("fonts/Inter-Regular.woff2") format("woff2");
 }
+
 .invisible {
   visibility: hidden;
 }
@@ -12,6 +13,11 @@
   width: 100vw;
   margin: 0;
 }
+
+* {
+  font-family: Inter;
+}
+
 .entirePizzaPageDiv {
   font-family: Inter;
   position: absolute;
@@ -68,3 +74,8 @@
   bottom: 2.5rem;
   right: 5rem;
 }
+
+.error {
+  color: red;
+}
+
