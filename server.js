@@ -39,3 +39,7 @@ app.use(authRoutes);
 app.use("/student", studentRoutes);
 app.use("/orderprocessor", orderProcessorRoutes);
 app.use("/chef", chefRoutes);
+
+app.use((req, res) => {
+  res.status(404).render("404");
+})
