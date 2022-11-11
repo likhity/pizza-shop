@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <!-- script Page -->
+    <script src="/pickUpTimePage.js" defer></script>
+
   </head>
+  
   <body>
     <h1><center>When is a good pick-up time?</center></h1>
 
@@ -30,31 +35,31 @@
       <b>:</b>
 
       <select name="minuteTime" id="minuteTime">
-        <option value="0">00</option>
-        <option value="1">05</option>
-        <option value="2">10</option>
-        <option value="3">15</option>
-        <option value="4">20</option>
-        <option value="5">25</option>
-        <option value="6">30</option>
-        <option value="7">35</option>
-        <option value="8">40</option>
-        <option value="9">45</option>
-        <option value="10">50</option>
-        <option value="11">55</option>
+        <option value="00">00</option>
+        <option value="05">05</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        <option value="55">55</option>
       </select>
 
       <select name="amPm" id="amPm">
-        <option value="">AM</option>
-        <option value="2">PM</option>
+        <option value="am">AM</option>
+        <option value="pm">PM</option>
       </select>
 
       <br />
       <br />
 
-      <form action="specialInstructions.html">
-        <button type="next">NEXT</button>
-      </form>
+
+    <button id="nextBtnpickTime"type="next">NEXT</button>
+
     </center>
   </body>
 </html>

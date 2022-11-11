@@ -83,7 +83,8 @@ customizePizzaForm.addEventListener("input", (e) => {
 
 //new class defines entire pizzaOrder
 const order = { 
-  pickUpTime: new Date(),
+  pickUpTime: "",
+  asuID: "",
   pizzaType: "Cheese",
   toppings: [],
   specialInstructions: "",
@@ -95,7 +96,7 @@ nextBtn.addEventListener("click", (e) => {
   order.pizzaType = PizzaViewer.getPizzaType();
   order.toppings = PizzaViewer.getToppings();
   
-  localStorage.setItem("SUN_DEVIL_PIZZA_ORDER", JSON.stringify(order));
+  sessionStorage.setItem("SUN_DEVIL_PIZZA_ORDER", JSON.stringify(order));
 
   window.location.assign("/student/pickup-time");
 })
