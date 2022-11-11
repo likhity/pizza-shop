@@ -15,6 +15,6 @@ router.get("/order/:orderID", chefController.order_get);
 
 // router.post("/confirm-cooking/:orderID", chefController.confirm_cooking_post);
 // router.post("/confirm-ready-to-pickup/:orderID", chefController.confirm_ready_to_pickup_post);
-// router.get("/order-status/:orderID", chefController.order_status_get);
+ router.get("/order-status/:orderID", chefController.order_status_get);
 
 module.exports = router;
