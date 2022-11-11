@@ -11,7 +11,7 @@ const router = Router();
 router.use(requireChefAuth);
 
 router.get("/order-list", chefController.order_list_get);
-// router.get("/order/:orderID", chefController.order_get);
+router.get("/order/:orderID", chefController.order_get);
 
 // router.post("/confirm-cooking/:orderID", chefController.confirm_cooking_post);
 // router.post("/confirm-ready-to-pickup/:orderID", chefController.confirm_ready_to_pickup_post);
