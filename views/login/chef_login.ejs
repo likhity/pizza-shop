@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Welcome, Chef.</h1>
-    <form id="chef-login" action="">
+    <form id="login-form" action="">
       <input type="text" name="username" id="username" placeholder="User ID" />
       <input
         type="password"
@@ -19,11 +19,31 @@
       <button name="loginButton" type="submit">Login</button>
     </form>
     <script>
-      const loginForm = document.getElementById("chef-login");
+      const loginForm = document.getElementById("login-form");
 
-      loginForm.loginButton.addEventListener("click", (e) => {
+      loginForm.loginButton.addEventListener("click", async (e) => {
         e.preventDefault();
-        window.location = "/chefOrderListPage.html";
+
+        const username = loginForm.username.value;
+        const password = loginForm.password.value;
+
+        // make request to server to login. we will recieve a response.
+        const response = await fetch("/chef/login", {
+          method: "POST",
+          body: JSON.stringify({ username, password }),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        // convert the response data into a readable json object
+        const data = await response.json();
+
+        if (data.error) {
+          document.querySelector("p.error").textContent = data.error;
+        }
+
+        if (data.user) {
+          window.location.assign("/chef/order-list");
+        }
       });
     </script>
   </body>
