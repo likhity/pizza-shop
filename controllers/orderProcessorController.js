@@ -51,7 +51,24 @@ module.exports.accept_order_post = async (req, res) => {
     res.status(400).json({ success: false });
   }
 };
-module.exports.confirm_pickedup_post = async (req, res) => {};
+module.exports.confirm_pickedup_post = async (req, res) => {
+  try {
+    const { orderID } = req.body;
+
+    const { asuID, pickUpTime, studentID, pizzaType, specialInstructions, toppings } = await AcceptedOrder.findOne({ orderID });
+
+    const newOrder = new FinishedOrder({ asuID, pickUpTime, studentID, pizzaType, specialInstructions, toppings });
+
+    await AcceptedOrder.deleteOne({ orderID });
+
+    newOrder.save().then(() => {
+      res.status(200).json({ success: true });
+    });
+
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
+};
 module.exports.order_status_get = async (req, res) => {
   try {
     const { orderID } = req.body;
