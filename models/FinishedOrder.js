@@ -30,6 +30,7 @@ const finishedOrderSchema = new Schema({
   },
   amountPaid: {
     type: Number,
+    default: 10
   },
 });
 
