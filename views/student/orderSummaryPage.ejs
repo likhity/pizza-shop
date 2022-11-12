@@ -10,25 +10,36 @@
         display: inline;
       }
     </style>
-  </head>
+
+
+<script src="/orderSummaryPage.js" defer></script>
+</head>
+
+
+
+
   <body>
+    <p>Welcome, <span id="asuID"><%= locals.asuID %></span>.</p>
     <center>
       <h1>Order Summary</h1>
       <br />
-      <p>Pizza Type: Pepperoni</p>
+      <p id="pizzaType">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
       <br />
-      <p>Toppings: Mushroom, Onion</p>
+      <p id="toppings">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
       <br />
-      <p>Pick Up Time: 3:00 AM</p>
+      <p id="pickUpTime">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
       <br />
-      <p>Special Instructions: I want a third of the pizza burnt.</p>
+      <p id="specialInstructions">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
 
-      <form action="customizePizzaPage.html">
-        <button type="next">EDIT</button>
+
+        <button id="editBtn" type="button">EDIT</button>
+
+
+
+      <form >
+        <button id="submit">SUBMIT ORDER</button>
       </form>
-      <form action="orderStatusPage.html">
-        <button type="next">NEXT</button>
-      </form>
+
     </center>
   </body>
 </html>

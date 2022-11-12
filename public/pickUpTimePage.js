@@ -18,7 +18,7 @@ var amPm = "";
 if (savedOrder.pickUpTime){
 
     //retrieve pickUpTime
-    const parsedPickUpTimeArray = savedOrder.pickUpTime.split(":");
+    const parsedPickUpTimeArray = savedOrder.pickUpTime.split(" ");
 
     // pickUpTime format = "01h:15m:am"
     //set corresponding values 
@@ -46,7 +46,7 @@ nxtBtn.addEventListener("click", (e) => {
     //set retrieved sessionStorage order's pickUpTime to userInput pickupTime
     //NOTE: used " : " for parsing when retrieving pickUpTime
     //format "05h:35m:am"
-    order.pickUpTime = `${hourTime}:${minuteTime}:${amPm}`;
+    order.pickUpTime = `${hourTime} ${minuteTime} ${amPm}`;
 
     //set sessionStorage to newOrder w/ new pickUpTime
     //send user to next page (specialInstructions)

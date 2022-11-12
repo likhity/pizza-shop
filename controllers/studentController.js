@@ -5,6 +5,8 @@ const AcceptedOrder = require("../models/AcceptedOrder");
 const FinishedOrder = require("../models/FinishedOrder");
 const StudentUser = require("../models/StudentUser");
 
+
+
 const ShortUniqueId = require("short-unique-id");
 
 module.exports.customize_pizza_get = (req, res) => {
@@ -33,16 +35,16 @@ module.exports.create_order_post = async (req, res) => {
       req.body;
 
     // every order will have a unique ID 10 characters long
-    const orderID = new ShortUniqueId({ length: 10 });
+    const orderID = (new ShortUniqueId({ length: 10 }))();
 
     //create order based off post request
     const newOrder = new Order({
-      pickUpTime,
+      pickUpTime: pickUpTime,
       studentID: asuID,
-      orderID,
-      pizzaType,
-      toppings,
-      specialInstructions,
+      orderID: orderID,
+      pizzaType: pizzaType,
+      toppings: toppings,
+      specialInstructions: specialInstructions,
     });
 
     newOrder.save().then((result) => {
@@ -74,6 +76,7 @@ module.exports.order_status_get = async (req, res) => {
       (await Order.findOne({ orderID })) ||
       (await AcceptedOrder.findOne({ orderID }));
 
+      //we recieved order and check what collection it belongs to in the database
     if (order.constructor.modelName === "AcceptedOrder") {
       res.status(200).json({ success: true, status: order.orderStatus });
     } else {
