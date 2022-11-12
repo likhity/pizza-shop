@@ -25,6 +25,6 @@ router.get("/view-order-status", studentController.view_order_status_get);
  */
 router.post("/create-order", studentController.create_order_post);
 router.delete("/cancel-order", studentController.cancel_order_delete);
-router.get("order-status", studentController.order_status_get);
+router.get("/order-status", studentController.order_status_get);
 
 module.exports = router;
