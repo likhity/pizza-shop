@@ -3,11 +3,24 @@ const AcceptedOrder = require("../models/AcceptedOrder");
 const FinishedOrder = require("../models/FinishedOrder");
 const OrderProcessor = require("../models/OrderProcessor");
 
+
+//needs to pass neworders object to page rendering
 module.exports.new_orders_get = async (req, res) => {
-  res.render("orderprocessor/NewOrdersPage");
+
+  //finds ALL orders of ORDER's database, sends results/errors, we render ejs page with that information
+  Order.find()
+  .then( (results) => {
+    res.render("orderprocessor/NewOrdersPage", {arrayOfOrdersDB: results});
+  })
+  .catch( (errors) => {
+    console.log("errors stuff");
+    console.log(errors);
+  })
 };
+
+
 module.exports.accepted_orders_get = async (req, res) => {
-  res.render("orderprocessor/AcceptedOrdersPage");
+  res.render("orderprocessor/AcceptedOrdersPage.ejs");
 };
 module.exports.finished_orders_get = async (req, res) => {
   res.render("orderprocessor/FinishedOrdersPage");

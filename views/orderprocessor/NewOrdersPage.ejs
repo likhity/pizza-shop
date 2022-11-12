@@ -51,39 +51,47 @@
       margin: 0;
     }
   </style>
+
+<script src="/NewOrdersPage.js" defer></script>
+
+
+
 </head>
+
+
 <body>
+
+
   <div class="tabs">
-    <a href="NewOrdersPage.html" class="selected"><center>New Orders</center></a>
-    <a href="AcceptedOrdersPage.html"><center>Accepted Orders</center></a>
-    <a href="FinishedOrdersPage.html"><center>Finished Orders</center></a>
+    <a id="NewOrdersTabs" class="selected"><center>New Orders</center></a>
+    <a id="AcceptedOrdersTabs"><center>Accepted Orders</center></a>
+    <a id="FinishedOrdersTabs"><center>Finished Orders</center></a>
   </div>
+
+  
   <div class="orders">
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
+    <!-- still need to pass array of newOrders (orders) here -->
+    <% if (arrayOfOrdersDB.length > 0) { %>
+      
+      <% arrayOfOrdersDB.forEach(arrayOfOrdersDB => { %>
+        
+        <!-- href needs to be THAT SPECIFIC NEW ORDER (ORDER) -->
+        <a class="order" href="specificNewOrder.html">
+          <!-- <h3></h6> -->
+          <!-- <p><strong>Pick up time: </strong>10:30 AM</p> -->
+          <p>   <strong>Pick Up Time:</strong><%= arrayOfOrdersDB.pickUpTime %>  </p>
+          <p>   <strong>Pizza Type:</strong><%= arrayOfOrdersDB.pizzaType %>   </p>
+          <p>   <strong>Toppings</strong><%= arrayOfOrdersDB.toppings %>    </p>
+        </a>
+
+        <% }) %> 
+    <% } else { %>
+
+      <p>There are no pending Orders to be accepted</p>
+
+      <% } %> 
   </div>
+
 </body>
 </body>
 </html>
