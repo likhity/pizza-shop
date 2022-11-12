@@ -25,9 +25,36 @@ module.exports.accepted_orders_get = async (req, res) => {
 module.exports.finished_orders_get = async (req, res) => {
   res.render("orderprocessor/FinishedOrdersPage");
 };
+
+
+
+
+
 module.exports.individual_new_order_get = async (req, res) => {
-  res.render("orderprocessor/specificNewOrder");
-};
+
+  //this route come from "/individual-new-order/:orderID"
+ 
+  //we recieve the MONGODB ID for the order and retrieve it from the parameter
+  const id = req.params.id;
+
+  //finds the mongo DB order using its unique id
+  Order.findById(id)
+    .then((result)=>{
+      //render specificNewOrderPage and send it corresponding order object from database
+      res.render("orderprocessor/specificNewOrder", {specificNewOrder: result});
+    })
+    .catch(err => {
+      console.log(err);
+    }); 
+
+}
+
+;
+
+
+
+
+
 module.exports.individual_accepted_order_get = async (req, res) => {
   res.render("orderprocessor/specificAcceptedOrder");
 };

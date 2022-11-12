@@ -70,15 +70,16 @@
 
   
   <div class="orders">
-    <!-- still need to pass array of newOrders (orders) here -->
+    
+    <!-- if we have a least one order -->
     <% if (arrayOfOrdersDB.length > 0) { %>
       
       <% arrayOfOrdersDB.forEach(arrayOfOrdersDB => { %>
         
-        <!-- href needs to be THAT SPECIFIC NEW ORDER (ORDER) -->
-        <a class="order" href="specificNewOrder.html">
-          <!-- <h3></h6> -->
-          <!-- <p><strong>Pick up time: </strong>10:30 AM</p> -->
+        <!-- each anchor tag is wrapped with a link using its ID FROM MONGO DB -->
+        <a class="order" href="/orderprocessor/individual-new-order/<%= arrayOfOrdersDB._id %> ">
+
+          <!-- each anchor tag contains information based on its own object -->
           <p>   <strong>Pick Up Time:</strong><%= arrayOfOrdersDB.pickUpTime %>  </p>
           <p>   <strong>Pizza Type:</strong><%= arrayOfOrdersDB.pizzaType %>   </p>
           <p>   <strong>Toppings</strong><%= arrayOfOrdersDB.toppings %>    </p>
