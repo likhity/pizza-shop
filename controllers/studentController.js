@@ -1,11 +1,8 @@
-
 //schema requires
 const Order = require("../models/Order");
 const AcceptedOrder = require("../models/AcceptedOrder");
 const FinishedOrder = require("../models/FinishedOrder");
 const StudentUser = require("../models/StudentUser");
-
-
 
 const ShortUniqueId = require("short-unique-id");
 
@@ -35,7 +32,7 @@ module.exports.create_order_post = async (req, res) => {
       req.body;
 
     // every order will have a unique ID 10 characters long
-    const orderID = (new ShortUniqueId({ length: 10 }))();
+    const orderID = new ShortUniqueId({ length: 10 })();
 
     //create order based off post request
     const newOrder = new Order({
@@ -72,7 +69,7 @@ module.exports.cancel_order_delete = async (req, res) => {
 module.exports.order_status_get = async (req, res) => {
   try {
     //we received orderID from client
-    const { orderID } = req.body;
+    const { orderID } = req.params;
 
     //try to find client's orderID in pending orders (order) database
     //or try to find in acceptedOrders
@@ -87,9 +84,8 @@ module.exports.order_status_get = async (req, res) => {
     if (order.constructor.modelName === "AcceptedOrder") {
       res.status(200).json({ success: true, status: order.orderStatus });
     } else {
-
-    //else status is pending (order) and return json saying ok status
-    //and success = true and status is not accepted (order sent) 
+      //else status is pending (order) and return json saying ok status
+      //and success = true and status is not accepted (order sent)
       res.status(200).json({ success: true, status: "Order Sent" });
     }
   } catch (err) {

@@ -29,32 +29,27 @@
       }
     </style>
 
-<!-- NEED SCRIPT SRC (NOTE: dont need def since while loop?)-->
-      <script src="/orderStatusPage.js" defer></script>
-
+    <!-- NEED SCRIPT SRC (NOTE: dont need def since while loop?)-->
+    <script src="/orderStatusPage.js" defer></script>
   </head>
 
-
-
   <body>
-
-
     <p>Hello, <span id="asuID"><%= locals.asuID %></span>.</p>
     <h1>Order Status</h1>
-    <p>Current Status: <span class="status red">SFERBH</span></p>
-    <p id="orderStatusText" class="green"></p>
+    <p>Current Status: <span class="status red">Order Sent</span></p>
     <div class="parent">
       <div class="summary">
         <h3>Order Summary</h3>
         <p id="pizzaTypeText">Pizza Type: Pepperoni</p>
         <p id="toppingsText">Toppings: Mushroom, Onion</p>
         <p id="pickUpTimeText">Pick-Up Time: 3:00 AM</p>
-        <p id="specialInstructionsText">Special Instructions: I want a third of the pizza burnt.</p>
+        <p id="specialInstructionsText">
+          Special Instructions: I want a third of the pizza burnt.
+        </p>
       </div>
       <div class="button">
         <button id="cancel-button">Cancel</button>
       </div>
     </div>
-
   </body>
 </html>
