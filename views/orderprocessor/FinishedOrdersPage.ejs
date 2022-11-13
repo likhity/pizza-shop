@@ -54,35 +54,27 @@
 </head>
 <body>
   <div class="tabs">
-    <a href="NewOrdersPage.html"><center>New Orders</center></a>
-    <a href="AcceptedOrdersPage.html"><center>Accepted Orders</center></a>
-    <a href="FinishedOrdersPage.html" class="selected"><center>Finished Orders</center></a>
+    <a href="/orderprocessor/new-orders"><center>New Orders</center></a>
+    <a href="/orderprocessor/accepted-orders"><center>Accepted Orders</center></a>
+    <a href="/orderprocessor/finished-orders" class="selected"><center>Finished Orders</center></a>
   </div>
   <div class="orders">
-    <a class="order" href="specificFinishedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificFinishedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificFinishedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificFinishedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
+    <% if (FinishedOrdersList.length > 0) { %>
+
+      <% FinishedOrdersList.forEach(finishedOrder => { %>
+        <a class="order" href="/orderprocessor/individual-finished-order/<%= FinishedOrdersList._id %>">
+          <h3>Order #113a</h3>
+          <p><strong>Pick up time: </strong> <%= finishedOrder.pickUpTime %>        </p>
+          <p><strong>Pizza Type: </strong>   <%= finishedOrder.pizzaType %>        </p>
+          <p><strong>Toppings: </strong>     <%= finishedOrder.toppings%>        </p>
+        </a>
+      <% }) %>
+    
+    <% } else { %>
+
+      <p>There are no Finished orders.</p>
+
+    <% } %> 
   </div>
 </body>
 </body>
