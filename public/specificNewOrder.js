@@ -39,13 +39,14 @@ acceptButton.addEventListener("click", async (e) => {
     //mongoOrderID was got in EJS file
     console.log(mongoOrderID);
     
-
+    //this is a string not a json
+    console.log(JSON.stringify({mongoOrderID: mongoOrderID}));
 
     //send mongoOrderID
     const response = await fetch("/orderprocessor/accept-order", { ///id as parameter?
     method: "POST",
     //send orderID not mongoID
-    body: JSON.stringify(mongoOrderID),
+    body: JSON.stringify({mongoOrderID: mongoOrderID}),
     headers: { "Content-Type": "application/json" }
     });
     

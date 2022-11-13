@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const acceptedOrderSchema = new Schema({
   pickUpTime: {
-    type: Date,
+    type: String,
     required: true,
   },
   orderID: {
@@ -31,7 +31,7 @@ const acceptedOrderSchema = new Schema({
   orderStatus: {
     type: String,
     required: true,
-    default: "accepted",
+    default: "Accepted",
   },
 });
 

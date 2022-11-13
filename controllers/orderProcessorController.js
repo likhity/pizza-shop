@@ -14,7 +14,6 @@ module.exports.new_orders_get = async (req, res) => {
     res.render("orderprocessor/NewOrdersPage", {arrayOfOrdersDB: results});
   })
   .catch( (errors) => {
-    console.log("errors stuff");
     console.log(errors);
   })
 };
@@ -41,14 +40,11 @@ module.exports.individual_new_order_get = async (req, res) => {
  
   //we recieve the MONGODB ID for the order and retrieve it from the parameter
   const thisOrderID = req.params.orderID;
-  console.log(thisOrderID);
 
   //finds the mongo DB order using its unique id
   Order.findById(thisOrderID)
     .then((results)=>{
       //render specificNewOrderPage and send it corresponding order object from database
-      console.log("got results");
-      console.log(results);
       res.render("orderprocessor/specificNewOrder", {specificNewOrder: results});
     })
     .catch(err => {
@@ -78,13 +74,14 @@ module.exports.accept_order_post = async (req, res) => {
   try {
     //get orderID
     //since post we get information in body
-    const { mongoOrderID } = req.body;
+    const mongoOrderID = req.body.mongoOrderID;
       console.log(mongoOrderID);
 
     // get the newOrder from the database
     
-    //findOne find by MongoID?
-    const newOrder = await Order.findById({ mongoOrderID });
+    //findbyID finds mongoOrderID finds using string
+    const newOrder = await Order.findById(mongoOrderID);
+    console.log(newOrder);
 
     // create new accepted order with the exact same order details
     const newAcceptedOrder = new AcceptedOrder({
@@ -101,7 +98,7 @@ module.exports.accept_order_post = async (req, res) => {
     await newAcceptedOrder.save();
 
     //  delete the order from the NewOrders list using mongoID
-    await Order.findByIdAndDelete({ mongoOrderID });
+    await Order.findByIdAndDelete(mongoOrderID);
 
     //  send response to client
     res.status(200).json({ success: true });
