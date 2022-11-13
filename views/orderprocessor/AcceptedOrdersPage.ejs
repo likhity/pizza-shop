@@ -74,12 +74,12 @@
 
       <% arrayOfAcceptedOrdersDB.forEach(arrayOfAcceptedOrdersDB => { %>
 
-    <a class="order" href="/orderprocessor/individual-accepted-order/<%= arrayOfAcceptedOrdersDB._id %>">
-      <h3>Order <%= arrayOfAcceptedOrdersDB.orderID %>   </h6>
-      <p><strong>Pick up time: </strong> <%= arrayOfAcceptedOrdersDB.pickUpTime %>        </p>
-      <p><strong>Pizza Type: </strong>   <%= arrayOfAcceptedOrdersDB.pizzaType %>        </p>
-      <p><strong>Toppings: </strong>     <%= arrayOfAcceptedOrdersDB.toppings%>        </p>
-    </a>
+        <a class="order" href="/orderprocessor/individual-accepted-order/<%= arrayOfAcceptedOrdersDB._id %>">
+          <h3>Order <%= arrayOfAcceptedOrdersDB.orderID %>   </h6>
+          <p><strong>Pick up time: </strong> <%= arrayOfAcceptedOrdersDB.pickUpTime %>        </p>
+          <p><strong>Pizza Type: </strong>   <%= arrayOfAcceptedOrdersDB.pizzaType %>        </p>
+          <p><strong>Toppings: </strong>     <%= arrayOfAcceptedOrdersDB.toppings%>        </p>
+        </a>
 
     <% }) %> 
     <% } else { %>

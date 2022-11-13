@@ -33,31 +33,33 @@
       <body>
         <h1>Orders</h1>
         <div class="orders">
-            <a class="order" href="chefSpecificOrder.html">
-              <h3>Order #113a</h6>
-              <p><strong>Pick up time: </strong>10:30 AM</p>
-              <p><strong>Pizza Type: </strong>Pepperoni</p>
-              <p><strong>Toppings: </strong>Mushroom, Onion</p>
-            </a>
-            <a class="order" href="chefSpecificOrder.html">
-              <h3>Order #113a</h6>
-              <p><strong>Pick up time: </strong>10:30 AM</p>
-              <p><strong>Pizza Type: </strong>Pepperoni</p>
-              <p><strong>Toppings: </strong>Mushroom, Onion</p>
-            </a>
-            <a class="order" href="chefSpecificOrder.html">
-              <h3>Order #113a</h6>
-              <p><strong>Pick up time: </strong>10:30 AM</p>
-              <p><strong>Pizza Type: </strong>Pepperoni</p>
-              <p><strong>Toppings: </strong>Mushroom, Onion</p>
-            </a>
-            <a class="order" href="chefSpecificOrder.html">
-              <h3>Order #113a</h6>
-              <p><strong>Pick up time: </strong>10:30 AM</p>
-              <p><strong>Pizza Type: </strong>Pepperoni</p>
-              <p><strong>Toppings: </strong>Mushroom, Onion</p>
-            </a>
+
+          <% if (acceptedOrdersList.length > 0) { %>
+
+            <% acceptedOrdersList.forEach(acceptedOrder => { %>
+
+              <a class="order" href="/chef/individual-chef-order/<%= acceptedOrdersList._id %>">
+                <h3>Order <%= acceptedOrder.orderID %>   </h6>
+                <p><strong>Pick up time: </strong> <%= acceptedOrder.pickUpTime %>        </p>
+                <p><strong>Pizza Type: </strong>   <%= acceptedOrder.pizzaType %>        </p>
+                <p><strong>Toppings: </strong>     <%= acceptedOrder.toppings%>        </p>
+              </a>
+          
+          <% }) %> 
+          <% } else { %>
+      
+            <p>There are no Orders</p>
+      
+          <% } %> 
+            
           </div>
         </body>        
-  
-</html>
+        
+        </html>
+        
+        <!-- <a class="order" href="chefSpecificOrder.html">
+          <h3>Order #113a</h6>
+          <p><strong>Pick up time: </strong>10:30 AM</p>
+          <p><strong>Pizza Type: </strong>Pepperoni</p>
+          <p><strong>Toppings: </strong>Mushroom, Onion</p>
+        </a> -->

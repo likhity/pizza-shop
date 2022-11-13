@@ -4,7 +4,16 @@ const FinishedOrder = require("../models/FinishedOrder");
 const ChefUser = require("../models/ChefUser");
 
 module.exports.order_list_get = async (req, res) => {
-  res.render("chef/chefOrderListPage");
+
+  try {
+
+    const acceptedOrdersList = await AcceptedOrder.find();
+
+    res.render("chef/chefOrderListPage", { acceptedOrdersList });
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
+
 };
 module.exports.order_get = async (req, res) => {
   res.render("chef/chefSpecificOrder");
