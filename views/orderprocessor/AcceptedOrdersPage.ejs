@@ -51,39 +51,48 @@
       margin: 0;
     }
   </style>
+
+<script src="/AcceptedOrdersPage.js" defer></script>  
+
 </head>
+
+
+
 <body>
+
   <div class="tabs">
-    <a href="NewOrdersPage.html"><center>New Orders</center></a>
-    <a href="AcceptedOrdersPage.html" class="selected"><center>Accepted Orders</center></a>
-    <a href="FinishedOrdersPage.html"><center>Finished Orders</center></a>
+    <a id="NewOrdersTabs"><center>New Orders</center></a>
+    <a id="AcceptedOrdersTabs" class="selected"><center>Accepted Orders</center></a>
+    <a id="FinishedOrdersTabs"><center>Finished Orders</center></a>
   </div>
+
+
+
   <div class="orders">
-    <a class="order" href="specificAcceptedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
+
+    <% if (arrayOfAcceptedOrdersDB.length > 0) { %>
+
+      <% arrayOfAcceptedOrdersDB.forEach(arrayOfAcceptedOrdersDB => { %>
+
+    <a class="order" href="/orderprocessor/individual-accepted-order/<%= arrayOfAcceptedOrdersDB._id %>">
+      <h3>Order <%= arrayOfAcceptedOrdersDB.orderID %>   </h6>
+      <p><strong>Pick up time: </strong> <%= arrayOfAcceptedOrdersDB.pickUpTime %>        </p>
+      <p><strong>Pizza Type: </strong>   <%= arrayOfAcceptedOrdersDB.pizzaType %>        </p>
+      <p><strong>Toppings: </strong>     <%= arrayOfAcceptedOrdersDB.toppings%>        </p>
     </a>
-    <a class="order" href="specificAcceptedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificAcceptedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificAcceptedOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
+
+    <% }) %> 
+    <% } else { %>
+
+      <p>There are no AcceptedOrders</p>
+
+      <% } %> 
+
+
   </div>
+
+
+
 </body>
 </body>
 </html>
