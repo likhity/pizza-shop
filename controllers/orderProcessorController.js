@@ -42,7 +42,13 @@ module.exports.accepted_orders_get = async (req, res) => {
 
 
 module.exports.finished_orders_get = async (req, res) => {
-  res.render("orderprocessor/FinishedOrdersPage");
+  try{
+    const FinishedOrdersList = await FinishedOrder.find();
+
+    res.render("orderprocessor/FinishedOrdersPage", { FinishedOrdersList });
+  }catch(err){
+    res.status(400).json({success: false});
+  }
 };
 
 
