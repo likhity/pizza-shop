@@ -54,40 +54,55 @@
       color: green;
     }
   </style>
+
+
+  <!-- save "specificAcceptedOrder" we recieved from server (orderProccessorController) into "thisSpecificAcceptedOrder" -->
+  <script> let thisOrdersMongoID = "<%= specificAcceptedOrder._id %>"
+              console.log(thisOrdersMongoID);
+  </script>
+
+  <script src="/specificAcceptedOrder.js" defer></script>
+
+
 </head>
+
+
+
+
 <body>
+
+
   <div class="tabs">
-    <a href="NewOrdersPage.html"><center>New Orders</center></a>
-    <a href="AcceptedOrdersPage.html" class="selected"><center>Accepted Orders</center></a>
-    <a href="FinishedOrdersPage.html"><center>Finished Orders</center></a>
-  </div>
-  <div class="parent">
-    <div class="order-details">
-      <h3>Order #113a</h3>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-      <p><strong>Special Instructions: </strong>blah blah blah</p>
+      <a id="NewOrdersTabs" ><center>New Orders</center></a>
+      <a id="AcceptedOrdersTabs" class="selected"><center>Accepted Orders</center></a>
+      <a id="FinishedOrdersTabs"><center>Finished Orders</center></a>
     </div>
+
+
+
+  <div class="parent">
+
+    <div class="order-details">
+      <h3>Order <%= specificAcceptedOrder.orderID %></h3>
+      <p><strong>Pick up time: </strong>         <%= specificAcceptedOrder.pickUpTime %>         </p>
+      <p><strong>Pizza Type: </strong>           <%= specificAcceptedOrder.pizzaType %>          </p>
+      <p><strong>Toppings: </strong>             <%= specificAcceptedOrder.toppings %>           </p>
+      <p><strong>Special Instructions: </strong> <%= specificAcceptedOrder.specialInstructions %></p>
+    </div>
+
+
     <div class="buttons">
-      <p>Current Status: <span class="status red">Ready to Cook</span></p>
+      <p id="orderStatusText">Current Status: Accepted</p>
       <button id="order-picked-up-button" disabled>Order Picked Up</button>
     </div>
+
+    
   </div>
-  <script>
-    const status = document.querySelector(".status")
-    const orderPickedUpButton = document.getElementById('order-picked-up-button');
-    setTimeout(() => {
-      status.textContent = "Cooking"
-      setTimeout(() => {
-        status.textContent = "Ready to Pickup"
-        status.classList.replace("red", "green")
-        orderPickedUpButton.disabled = false;
-        orderPickedUpButton.addEventListener("click", () => {
-          window.location = "/specificFinishedOrder.html"
-        })
-      }, 5000)
-    }, 5000)
-  </script>
+
+
+
+
+
+
 </body>
 </html>
