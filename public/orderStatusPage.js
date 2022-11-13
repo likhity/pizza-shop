@@ -43,13 +43,24 @@ const fiveSecondInterval = setInterval(async () => {
   orderStatusText.textContent = orderStatusState;
   if (orderStatusState === "Ready to Pickup") {
     orderStatusText.classList.replace("red", "green");
+    clearInterval(fiveSecondInterval);
   }
 }, 5000);
 
 //at this point order status is "ready to pick up"
 //need to display order to pick up and make it green
 
-// //CANCEL BUTTON WILL DO WITH DELETE REQUEST
-// // cancelButton.addEventListener("click", () => {
-// //     window.location = "/customizePizzaPage.html";
-// //   });
+//CANCEL BUTTON WILL DO WITH DELETE REQUEST
+cancelButton.addEventListener("click", async (e) => {
+  console.log(clientOrderID);
+  e.preventDefault();
+  await fetch("/student/cancel-order", {
+    method: "DELETE",
+    body: JSON.stringify({ orderID: clientOrderID }),
+    headers: { "Content-Type": "application/json" },
+  });
+  clearInterval(fiveSecondInterval);
+  sessionStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem("ORDER_ID");
+  location.assign("/student/customize-pizza");
+});
