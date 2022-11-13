@@ -53,17 +53,17 @@
 </head>
 <body>
   <div class="tabs">
-    <a href="NewOrdersPage.html"><center>New Orders</center></a>
-    <a href="AcceptedOrdersPage.html"><center>Accepted Orders</center></a>
-    <a href="FinishedOrdersPage.html" class="selected"><center>Finished Orders</center></a>
+    <a href="/orderprocessor/new-orders"><center>New Orders</center></a>
+    <a href="/orderprocessor/accepted-orders"><center>Accepted Orders</center></a>
+    <a href="/orderprocessor/finished-orders" class="selected"><center>Finished Orders</center></a>
   </div>
   <div class="parent">
     <div class="order-details">
-      <h3>Order #113a</h3>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-      <p><strong>Special Instructions: </strong>blah blah blah</p>
+      <h3>Order <%= specificFinishedOrder.orderID %></h3>
+      <p><strong>Pick up time: </strong> <%= specificFinishedOrder.pickUpTime %> </p>
+      <p><strong>Pizza Type: </strong><%= specificFinishedOrder.pizzaType %></p>
+      <p><strong>Toppings: </strong><%= specificFinishedOrder.toppings %></p>
+      <p><strong>Special Instructions: </strong><%= specificFinishedOrder.specialInstructions %></p>
     </div>
     <div class="buttons">
       <p>Amount Charged: <span class="amount-paid">$10.00</span></p>
