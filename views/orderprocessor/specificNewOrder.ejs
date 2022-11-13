@@ -46,33 +46,64 @@
         gap: 1rem;
       }
     </style>
+
+<script> 
+  let mongoOrderID = "<%= specificNewOrder._id  %>";
+  console.log("beforefirstscript");
+  console.log(mongoOrderID);
+  console.log("afterfirstscript");
+</script>
+
+
+<script src="/specificNewOrder.js" defer></script>
+
   </head>
+
+
+
   <body>
+
+
+
+
+
     <div class="tabs">
-      <a href="NewOrdersPage.html" class="selected"
-        ><center>New Orders</center></a
-      >
-      <a href="AcceptedOrdersPage.html"><center>Accepted Orders</center></a>
-      <a href="FinishedOrdersPage.html"><center>Finished Orders</center></a>
+      <a id="NewOrdersTabs" class="selected"><center>New Orders</center></a>
+      <a id="AcceptedOrdersTabs"><center>Accepted Orders</center></a>
+      <a id="FinishedOrdersTabs"><center>Finished Orders</center></a>
     </div>
+
+
+
     <div class="parent">
       <div class="order-details">
-        <h3>Order #113a</h3>
-        <p><strong>Pick up time: </strong>10:30 AM</p>
-        <p><strong>Pizza Type: </strong>Pepperoni</p>
-        <p><strong>Toppings: </strong>Mushroom, Onion</p>
-        <p><strong>Special Instructions: </strong>blah blah blah</p>
+        <h3>Order</h3>
+        <h3 id="specificNewOrderID"><%= specificNewOrder.orderID %></h3>
+        <p><strong>Pick up time: </strong>        <%= specificNewOrder.pickUpTime %>         </p>
+        <p><strong>Pizza Type: </strong>          <%= specificNewOrder.pizzaType %>          </p>
+        <p><strong>Toppings: </strong>            <%= specificNewOrder.toppings %>           </p>
+        <p><strong>Special Instructions: </strong><%= specificNewOrder.specialInstructions %></p>
       </div>
+
+
+
+      
       <div class="buttons">
-        <button id="accept-button">Accept</button>
-        <button id="cancel-button">Cancel</button>
+
+        <form><button id="accept-button">Accept</button></form>
+        <form><button id="cancel-button">Cancel</button></form>
+      
       </div>
+
     </div>
-    <script>
-      const acceptButton = document.getElementById("accept-button");
-      acceptButton.addEventListener("click", () => {
-        window.location = "/specificAcceptedOrder.html";
-      });
-    </script>
+
+
+
+
+
+
   </body>
+
+
+
 </html>

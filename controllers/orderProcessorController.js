@@ -4,6 +4,7 @@ const FinishedOrder = require("../models/FinishedOrder");
 const OrderProcessor = require("../models/OrderProcessor");
 
 
+//----------------------------------DONE-----------------------------------------------------------------------
 //needs to pass neworders object to page rendering
 module.exports.new_orders_get = async (req, res) => {
 
@@ -17,6 +18,9 @@ module.exports.new_orders_get = async (req, res) => {
     console.log(errors);
   })
 };
+//--------------------------------------------------------------------------------------------------------------
+
+
 
 
 module.exports.accepted_orders_get = async (req, res) => {
@@ -30,18 +34,22 @@ module.exports.finished_orders_get = async (req, res) => {
 
 
 
+
 module.exports.individual_new_order_get = async (req, res) => {
 
   //this route come from "/individual-new-order/:orderID"
  
   //we recieve the MONGODB ID for the order and retrieve it from the parameter
-  const id = req.params.id;
+  const thisOrderID = req.params.orderID;
+  console.log(thisOrderID);
 
   //finds the mongo DB order using its unique id
-  Order.findById(id)
-    .then((result)=>{
+  Order.findById(thisOrderID)
+    .then((results)=>{
       //render specificNewOrderPage and send it corresponding order object from database
-      res.render("orderprocessor/specificNewOrder", {specificNewOrder: result});
+      console.log("got results");
+      console.log(results);
+      res.render("orderprocessor/specificNewOrder", {specificNewOrder: results});
     })
     .catch(err => {
       console.log(err);
@@ -62,12 +70,21 @@ module.exports.individual_finished_order_get = async (req, res) => {
   res.render("orderprocessor/specificFinishedOrder");
 };
 
+
+
+
+
 module.exports.accept_order_post = async (req, res) => {
   try {
-    const { orderID } = req.params;
+    //get orderID
+    //since post we get information in body
+    const { mongoOrderID } = req.body;
+      console.log(mongoOrderID);
 
-    // get the new order from the database
-    const newOrder = await Order.findOne({ orderID });
+    // get the newOrder from the database
+    
+    //findOne find by MongoID?
+    const newOrder = await Order.findById({ mongoOrderID });
 
     // create new accepted order with the exact same order details
     const newAcceptedOrder = new AcceptedOrder({
@@ -77,13 +94,14 @@ module.exports.accept_order_post = async (req, res) => {
       pizzaType: newOrder.pizzaType,
       toppings: newOrder.toppings,
       specialInstructions: newOrder.specialInstructions,
+      orderStatus: "Accepted",
     });
 
     //  save the new accepted order to the AcceptedOrders collection in the database
     await newAcceptedOrder.save();
 
-    //  delete the order from the NewOrders list
-    await Order.deleteOne({ orderID });
+    //  delete the order from the NewOrders list using mongoID
+    await Order.findByIdAndDelete({ mongoOrderID });
 
     //  send response to client
     res.status(200).json({ success: true });
@@ -91,6 +109,12 @@ module.exports.accept_order_post = async (req, res) => {
     res.status(400).json({ success: false });
   }
 };
+
+
+
+
+
+
 module.exports.confirm_pickedup_post = async (req, res) => {
   try {
     const { orderID } = req.body;

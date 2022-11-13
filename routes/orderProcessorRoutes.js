@@ -24,6 +24,8 @@ router.get("/accepted-orders", orderProcessorController.accepted_orders_get);
  * (like getting the order status) or change state (like
  * accepting an order or confirming an order has been picked up)
  */
+
+//currently ommited "/accept-order/:orderID" into "/accept-order"
 router.post("/accept-order/:orderID", orderProcessorController.accept_order_post);
 router.post("/confirm-pickedup/:orderID", orderProcessorController.confirm_pickedup_post);
 router.get("/order-status/:orderID", orderProcessorController.order_status_get);
