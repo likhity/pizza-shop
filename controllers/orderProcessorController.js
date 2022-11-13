@@ -91,7 +91,18 @@ module.exports.individual_accepted_order_get = async (req, res) => {
 
 
 module.exports.individual_finished_order_get = async (req, res) => {
-  res.render("orderprocessor/specificFinishedOrder");
+
+  try {
+    const orderID = req.params.orderID;
+  
+    const specificFinishedOrder = await Order.findById(orderID);
+  
+    res.render("orderprocessor/specificFinishedOrder", { specificFinishedOrder: specificFinishedOrder });
+
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
+
 };
 
 
