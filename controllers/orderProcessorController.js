@@ -23,8 +23,24 @@ module.exports.new_orders_get = async (req, res) => {
 
 
 module.exports.accepted_orders_get = async (req, res) => {
-  res.render("orderprocessor/AcceptedOrdersPage.ejs");
+
+  //find all acceptedOrders
+  AcceptedOrder.find()
+  .then( (results) => {
+    //send acceptedOrdersPage array of Accepted Orders
+    console.log(results);
+    console.log("================BOT OF RESUTLS =========================");
+    res.render("orderprocessor/AcceptedOrdersPage", {arrayOfAcceptedOrdersDB: results});
+  })
+  .catch( (errors) => {
+    console.log(errors);
+  })
+
 };
+
+
+
+
 module.exports.finished_orders_get = async (req, res) => {
   res.render("orderprocessor/FinishedOrdersPage");
 };
@@ -58,10 +74,16 @@ module.exports.individual_new_order_get = async (req, res) => {
 
 
 
-
+//need to send myself the individual acceptedOrder to "specificAcceptedOrder" ejs
 module.exports.individual_accepted_order_get = async (req, res) => {
   res.render("orderprocessor/specificAcceptedOrder");
 };
+
+
+
+
+
+
 module.exports.individual_finished_order_get = async (req, res) => {
   res.render("orderprocessor/specificFinishedOrder");
 };
