@@ -169,13 +169,21 @@ module.exports.confirm_pickedup_post = async (req, res) => {
     res.status(400).json({ success: false });
   }
 };
+
+
+
+
+
 module.exports.order_status_get = async (req, res) => {
   try {
-    const { orderID } = req.body;
+    //get mongoOrderID from url parameter (mongoOrderID)
+    const mongoOrderID = req.params.mongoOrderID;
 
-    const order = await AcceptedOrder.findOne({ orderID });
 
-    res.status(200).json({ success: true, status: order.orderStatus });
+    //note: only acceptedOrders have statuses (only search acceptedOrders collections)
+    const acceptedOrder = await AcceptedOrder.findById(mongoOrderID);
+
+    res.status(200).json({ success: true, status: acceptedOrder.orderStatus });
   } catch (err) {
     res.status(400).json({ success: false });
   }

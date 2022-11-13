@@ -57,7 +57,9 @@
 
 
   <!-- save "specificAcceptedOrder" we recieved from server (orderProccessorController) into "thisSpecificAcceptedOrder" -->
-  <script> const thisSpecificAcceptedOrder = "<%= specificAcceptedOrder %>" </script>
+  <script> let thisOrdersMongoID = "<%= specificAcceptedOrder._id %>"
+              console.log(thisOrdersMongoID);
+  </script>
 
   <script src="/specificAcceptedOrder.js" defer></script>
 
@@ -90,7 +92,7 @@
 
 
     <div class="buttons">
-      <p>Current Status: <span class="status red">Ready to Cook</span></p>
+      <p id="orderStatusText">Current Status: Accepted</p>
       <button id="order-picked-up-button" disabled>Order Picked Up</button>
     </div>
 
@@ -99,21 +101,7 @@
 
 
 
-  <script>
-    const status = document.querySelector(".status")
-    const orderPickedUpButton = document.getElementById('order-picked-up-button');
-    setTimeout(() => {
-      status.textContent = "Cooking"
-      setTimeout(() => {
-        status.textContent = "Ready to Pickup"
-        status.classList.replace("red", "green")
-        orderPickedUpButton.disabled = false;
-        orderPickedUpButton.addEventListener("click", () => {
-          window.location = "/specificFinishedOrder.html"
-        })
-      }, 5000)
-    }, 5000)
-  </script>
+
 
 
 </body>

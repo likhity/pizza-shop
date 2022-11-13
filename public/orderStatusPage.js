@@ -42,7 +42,9 @@ const fiveSecondInterval = setInterval(async () => {
   cancelButton.disabled = orderStatusState !== "Order Sent";
   orderStatusText.textContent = orderStatusState;
   if (orderStatusState === "Ready to Pickup") {
+    //if order is ready to pick up we break out of loop
     orderStatusText.classList.replace("red", "green");
+    clearInterval(fiveSecondInterval);
   }
 }, 5000);
 

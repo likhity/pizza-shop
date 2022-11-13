@@ -29,6 +29,6 @@ router.get("/individual-accepted-order/:orderID", orderProcessorController.indiv
 //currently ommited "/accept-order/:orderID" into "/accept-order"
 router.post("/accept-order", orderProcessorController.accept_order_post);
 router.post("/confirm-pickedup/:orderID", orderProcessorController.confirm_pickedup_post);
-router.get("/order-status/:orderID", orderProcessorController.order_status_get);
+router.get("/order-status/:mongoOrderID", orderProcessorController.order_status_get);
 
 module.exports = router;
