@@ -28,48 +28,28 @@
         padding: 1rem 1.5rem;
       }
     </style>
+
+    <!-- NEED SCRIPT SRC (NOTE: dont need def since while loop?)-->
+    <script src="/orderStatusPage.js" defer></script>
   </head>
+
   <body>
+    <p>Hello, <span id="asuID"><%= locals.asuID %></span>.</p>
     <h1>Order Status</h1>
     <p>Current Status: <span class="status red">Order Sent</span></p>
-    <p id="ready-to-pick-up-text" class="green"></p>
     <div class="parent">
       <div class="summary">
         <h3>Order Summary</h3>
-        <p>Pizza Type: Pepperoni</p>
-        <p>Toppings: Mushroom, Onion</p>
-        <p>Pick-Up Time: 3:00 AM</p>
-        <p>Special Instructions: I want a third of the pizza burnt.</p>
+        <p id="pizzaTypeText">Pizza Type: Pepperoni</p>
+        <p id="toppingsText">Toppings: Mushroom, Onion</p>
+        <p id="pickUpTimeText">Pick-Up Time: 3:00 AM</p>
+        <p id="specialInstructionsText">
+          Special Instructions: I want a third of the pizza burnt.
+        </p>
       </div>
       <div class="button">
         <button id="cancel-button">Cancel</button>
       </div>
     </div>
-    <script>
-      const status = document.querySelector(".status");
-      const readyToPickUpText = document.getElementById(
-        "ready-to-pick-up-text"
-      );
-      const cancelButton = document.getElementById("cancel-button");
-      setTimeout(() => {
-        status.textContent = "Accepted";
-        cancelButton.disabled = true;
-        setTimeout(() => {
-          status.textContent = "Ready to Cook";
-          setTimeout(() => {
-            status.textContent = "Cooking";
-            setTimeout(() => {
-              status.textContent = "Ready To Pick Up";
-              status.classList.replace("red", "green");
-              readyToPickUpText.textContent = "Your order is ready to pick up.";
-            }, 5000);
-          });
-        }, 5000);
-      }, 5000);
-
-      cancelButton.addEventListener("click", () => {
-        window.location = "/customizePizzaPage.html";
-      });
-    </script>
   </body>
 </html>
