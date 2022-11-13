@@ -8,7 +8,7 @@ var orderStatusText = document.querySelector(".status");
 var cancelButton = document.getElementById("cancel-button");
 
 //get orderID from client(assume each client only has one order)
-const clientOrderID = sessionStorage.getItem("ORDER_ID").split('"')[1];
+const clientOrderID = sessionStorage.getItem("ORDER_ID");
 
 //get order from client
 const STORAGE_KEY = "SUN_DEVIL_PIZZA_ORDER";
