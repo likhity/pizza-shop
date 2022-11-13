@@ -71,6 +71,10 @@ module.exports.order_status_get = async (req, res) => {
     //we received orderID from client
     const { orderID } = req.params;
 
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+
     //try to find client's orderID in pending orders (order) database
     //or try to find in acceptedOrders
     const order =
@@ -81,7 +85,7 @@ module.exports.order_status_get = async (req, res) => {
 
     //if belongs to acceptedOrder
     //send OK response (200) and json containing success = true and status from order
-    if (order.constructor.modelName === "AcceptedOrder") {
+    if (order.constructor.modelName === "acceptedorder") {
       res.status(200).json({ success: true, status: order.orderStatus });
     } else {
       //else status is pending (order) and return json saying ok status
