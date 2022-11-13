@@ -60,7 +60,7 @@ module.exports.cancel_order_delete = async (req, res) => {
 
     await Order.deleteOne({ orderID });
 
-    res.redirect("/student/customize-pizza");
+    res.status(200).json({ success: true });
   } catch (err) {
     res.status(400).json({ success: false });
   }
