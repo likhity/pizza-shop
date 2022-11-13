@@ -51,39 +51,49 @@
       margin: 0;
     }
   </style>
+
+<script src="/NewOrdersPage.js" defer></script>
+
+
+
 </head>
+
+
 <body>
+
+
   <div class="tabs">
-    <a href="NewOrdersPage.html" class="selected"><center>New Orders</center></a>
-    <a href="AcceptedOrdersPage.html"><center>Accepted Orders</center></a>
-    <a href="FinishedOrdersPage.html"><center>Finished Orders</center></a>
+    <a id="NewOrdersTabs" class="selected"><center>New Orders</center></a>
+    <a id="AcceptedOrdersTabs"><center>Accepted Orders</center></a>
+    <a id="FinishedOrdersTabs"><center>Finished Orders</center></a>
   </div>
+
+  
   <div class="orders">
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
-    <a class="order" href="specificNewOrder.html">
-      <h3>Order #113a</h6>
-      <p><strong>Pick up time: </strong>10:30 AM</p>
-      <p><strong>Pizza Type: </strong>Pepperoni</p>
-      <p><strong>Toppings: </strong>Mushroom, Onion</p>
-    </a>
+  
+    <!-- if we have a least one order -->
+    <% if (arrayOfOrdersDB.length > 0) { %>
+      
+      <% arrayOfOrdersDB.forEach(arrayOfOrdersDB => { %>
+     
+        <!-- each anchor tag is wrapped with a link using its ID FROM MONGO DB -->
+        <a class="order" href="/orderprocessor/individual-new-order/<%= arrayOfOrdersDB._id %> ">
+
+          <!-- each anchor tag contains information based on its own object -->
+
+          <p>   <strong>Pick Up Time:</strong><%= arrayOfOrdersDB.pickUpTime %>  </p>
+          <p>   <strong>Pizza Type:</strong><%= arrayOfOrdersDB.pizzaType %>   </p>
+          <p>   <strong>Toppings</strong><%= arrayOfOrdersDB.toppings %>    </p>
+        </a>
+
+        <% }) %> 
+    <% } else { %>
+
+      <p>There are no pending Orders to be accepted</p>
+
+      <% } %> 
   </div>
+
 </body>
 </body>
 </html>
