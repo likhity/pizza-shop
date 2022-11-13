@@ -4,6 +4,8 @@ const FinishedOrder = require("../models/FinishedOrder");
 const OrderProcessor = require("../models/OrderProcessor");
 
 
+//==================================== PAGES =================================================
+
 //----------------------------------DONE-----------------------------------------------------------------------
 //needs to pass neworders object to page rendering
 module.exports.new_orders_get = async (req, res) => {
@@ -19,8 +21,7 @@ module.exports.new_orders_get = async (req, res) => {
 };
 //--------------------------------------------------------------------------------------------------------------
 
-
-
+//----------------------------------DONE-----------------------------------------------------------------------
 
 module.exports.accepted_orders_get = async (req, res) => {
 
@@ -28,8 +29,6 @@ module.exports.accepted_orders_get = async (req, res) => {
   AcceptedOrder.find()
   .then( (results) => {
     //send acceptedOrdersPage array of Accepted Orders
-    console.log(results);
-    console.log("================BOT OF RESUTLS =========================");
     res.render("orderprocessor/AcceptedOrdersPage", {arrayOfAcceptedOrdersDB: results});
   })
   .catch( (errors) => {
@@ -37,6 +36,7 @@ module.exports.accepted_orders_get = async (req, res) => {
   })
 
 };
+//--------------------------------------------------------------------------------------------------------------
 
 
 
@@ -45,20 +45,23 @@ module.exports.finished_orders_get = async (req, res) => {
   res.render("orderprocessor/FinishedOrdersPage");
 };
 
+//===========================================================================================
 
 
 
+//==================================== INDIVIDUAL ORDRE PAGES =================================================
 
+//----------------------------------DONE-----------------------------------------------------------------------
 
 module.exports.individual_new_order_get = async (req, res) => {
 
   //this route come from "/individual-new-order/:orderID"
  
   //we recieve the MONGODB ID for the order and retrieve it from the parameter
-  const thisOrderID = req.params.orderID;
+  const thisMongoOrderID = req.params.orderID;
 
   //finds the mongo DB order using its unique id
-  Order.findById(thisOrderID)
+  Order.findById(thisMongoOrderID)
     .then((results)=>{
       //render specificNewOrderPage and send it corresponding order object from database
       res.render("orderprocessor/specificNewOrder", {specificNewOrder: results});
@@ -66,6 +69,7 @@ module.exports.individual_new_order_get = async (req, res) => {
     .catch(err => {
       console.log(err);
     }); 
+//-------------------------------------------------------------------------------------------------------------
 
 }
 
@@ -76,7 +80,19 @@ module.exports.individual_new_order_get = async (req, res) => {
 
 //need to send myself the individual acceptedOrder to "specificAcceptedOrder" ejs
 module.exports.individual_accepted_order_get = async (req, res) => {
-  res.render("orderprocessor/specificAcceptedOrder");
+
+  //we recieve MONGO NEWORDER ID in URL PARAMETERS
+  const thisMongoOrderID = req.params.orderID;
+
+  //finds the mongo DB acceptedOrder using its unique id
+  AcceptedOrder.findById(thisMongoOrderID)
+    .then((results)=>{
+      //render specificNewOrderPage and send it corresponding order object from database
+      res.render("orderprocessor/specificAcceptedOrder", {specificAcceptedOrder: results});
+    })
+    .catch(err => {
+      console.log(err);
+    }); 
 };
 
 
@@ -89,6 +105,7 @@ module.exports.individual_finished_order_get = async (req, res) => {
 };
 
 
+//==============================================================================================
 
 
 
