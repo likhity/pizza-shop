@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const finishedOrderSchema = new Schema({
   pickUpTime: {
-    type: Date,
+    type: String,
     required: true,
   },
   orderID: {

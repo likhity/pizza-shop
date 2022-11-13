@@ -7,11 +7,6 @@ const chefRoutes = require("./routes/chefRoutes");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-const ShortUniqueId = require("short-unique-id");
-
-const newID = new ShortUniqueId({ length: 10 });
-console.log(newID)
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
