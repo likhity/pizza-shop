@@ -62,8 +62,8 @@
     <% if (FinishedOrdersList.length > 0) { %>
 
       <% FinishedOrdersList.forEach(finishedOrder => { %>
-        <a class="order" href="/orderprocessor/individual-finished-order/<%= FinishedOrdersList._id %>">
-          <h3>Order #113a</h3>
+        <a class="order" href="/orderprocessor/individual-finished-order/<%= finishedOrder.orderID %>">
+          <h3>Order <%= finishedOrder.orderID %></h3>
           <p><strong>Pick up time: </strong> <%= finishedOrder.pickUpTime %>        </p>
           <p><strong>Pizza Type: </strong>   <%= finishedOrder.pizzaType %>        </p>
           <p><strong>Toppings: </strong>     <%= finishedOrder.toppings%>        </p>

@@ -17,7 +17,7 @@ router.get("/accepted-orders", orderProcessorController.accepted_orders_get);
  router.get("/individual-new-order/:orderID", orderProcessorController.individual_new_order_get);
  //need to make controller for individual acceptedOrders
 router.get("/individual-accepted-order/:orderID", orderProcessorController.individual_accepted_order_get);
-// router.get("/individual-finished-order/:orderID", orderProcessorController.individual_finished_order_get);
+router.get("/individual-finished-order/:orderID", orderProcessorController.individual_finished_order_get);
 
 /**
  * The following routes don't render pages. They are just

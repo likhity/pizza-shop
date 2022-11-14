@@ -95,7 +95,7 @@ module.exports.individual_finished_order_get = async (req, res) => {
   try {
     const orderID = req.params.orderID;
   
-    const specificFinishedOrder = await Order.findById(orderID);
+    const specificFinishedOrder = await FinishedOrder.findOne({orderID});
   
     res.render("orderprocessor/specificFinishedOrder", { specificFinishedOrder: specificFinishedOrder });
 
@@ -168,7 +168,7 @@ module.exports.confirm_pickedup_post = async (req, res) => {
       toppings,
     });
 
-    await AcceptedOrder.deleteOne({ mongoOrderID });
+    await AcceptedOrder.deleteOne({ orderID });
 
     newOrder.save().then(() => {
       res.status(200).json({ success: true });
