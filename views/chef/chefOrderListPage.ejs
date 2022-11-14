@@ -38,7 +38,7 @@
 
             <% acceptedOrdersList.forEach(acceptedOrder => { %>
 
-              <a class="order" href="/chef/individual-chef-order/<%= acceptedOrdersList._id %>">
+              <a class="order" href="/chef/order/<%= acceptedOrder.orderID %>">
                 <h3>Order <%= acceptedOrder.orderID %>   </h6>
                 <p><strong>Pick up time: </strong> <%= acceptedOrder.pickUpTime %>        </p>
                 <p><strong>Pizza Type: </strong>   <%= acceptedOrder.pizzaType %>        </p>

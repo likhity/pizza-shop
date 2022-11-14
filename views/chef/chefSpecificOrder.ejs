@@ -12,26 +12,42 @@
         gap: 50px;
       }
     </style>
+    <script>
+      let orderID = "<%= specificOrder.orderID %>"
+    </script>
+    <script src="/specificChefOrder.js" defer></script>
+    <link rel="stylesheet" href="/styles.css">
   </head>
+
+  
   <body>
-    <h1>Order 333</h1>
+    <h1>Order <%= specificOrder.orderID %></h1>
     <div class="parent">
       <div class="button">
-        <button id="in-the-oven-button" class="red">In the Oven</button>
+        
+        <% if (specificOrder.orderStatus === "Accepted") { %> 
+          <button id="ready-to-cook-button" class="red">Ready to Cook</button>
+          <button id="in-the-oven-button" class="red invisible" disabled>Cooking</button>
+          <button id="ready-to-pick-up-button" class="red invisible" disabled>Ready to Pickup</button>
+
+        <% } else if (specificOrder.orderStatus === "Ready to Cook") { %>
+          <button id="ready-to-cook-button" class="red invisible" disabled>Ready to Cook</button>
+          <button id="in-the-oven-button" class="red">Cooking</button>
+          <button id="ready-to-pick-up-button" class="red invisible" disabled>Ready to Pickup</button>
+
+        <% } else { %>
+          <button id="ready-to-cook-button" class="red invisible" disabled>Ready to Cook</button>
+          <button id="in-the-oven-button" class="red invisible" disabled>Cooking</button>
+          <button id="ready-to-pick-up-button" class="red">Ready to Pickup</button>
+          
+        <% } %> 
       </div>
       <div class="order-details">
-        <p><strong>Pick up time: </strong>10:30 AM</p>
-        <p><strong>Pizza Type: </strong>Pepperoni</p>
-        <p><strong>Toppings: </strong>Mushroom, Onion</p>
-        <p><strong>Special Instructions: </strong>blah blah blah</p>
+        <p><strong>Pick up time: </strong><%= specificOrder.pickUpTime %></p>
+        <p><strong>Pizza Type: </strong><%= specificOrder.pizzaType %></p>
+        <p><strong>Toppings: </strong><%= specificOrder.toppings %></p>
+        <p><strong>Special Instructions: </strong><%= specificOrder.specialInstructions %></p>
       </div>
     </div>
-    <script>
-      const inTheOvenButton = document.getElementById("in-the-oven-button");
-
-      inTheOvenButton.addEventListener("click", () => {
-        window.location = "/chefSpecificOrderReadyToPickUp.html";
-      });
-    </script>
   </body>
 </html>
