@@ -11,10 +11,11 @@ const router = Router();
 router.use(requireChefAuth);
 
 router.get("/order-list", chefController.order_list_get);
-router.get("/order/:orderID", chefController.order_get);
+router.get("/order/:orderID", chefController.individual_order_get);
 
-router.post("/confirm-cooking/:orderID", chefController.confirm_cooking_post);
-router.post("/confirm-ready-to-pickup/:orderID", chefController.confirm_ready_to_pickup_post);
- router.get("/order-status/:orderID", chefController.order_status_get);
+router.post("/confirm-ready-to-cook", chefController.confirm_ready_to_cook_post);
+router.post("/confirm-cooking", chefController.confirm_cooking_post);
+router.post("/confirm-ready-to-pickup", chefController.confirm_ready_to_pickup_post);
+router.get("/order-status/:orderID", chefController.order_status_get);
 
 module.exports = router;
