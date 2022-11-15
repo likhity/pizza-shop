@@ -18,8 +18,12 @@ const requireStudentAuth = async (req, res, next) => {
           res.redirect("/student/login");
         } else {
           const user = await StudentUser.findById(decodedToken.id);
-          res.locals.asuID = user.asuID;
-          next();
+          if (!user) {
+            res.redirect("/student/login");
+          } else {
+            res.locals.asuID = user.asuID;
+            next();
+          }
         }
       }
     );
@@ -42,8 +46,12 @@ const requireOrderProcessorAuth = async (req, res, next) => {
           res.redirect("/orderprocessor/login");
         } else {
           const user = await OrderProcessor.findById(decodedToken.id);
-          res.locals.username = user.username;
-          next();
+          if (!user) {
+            res.redirect("/orderprocessor/login");
+          } else {
+            res.locals.username = user.username;
+            next();
+          }
         }
       }
     );
@@ -66,8 +74,12 @@ const requireChefAuth = async (req, res, next) => {
           res.redirect("/chef/login");
         } else {
           const user = await ChefUser.findById(decodedToken.id);
-          res.locals.username = user.username;
-          next();
+          if (!user) {
+            res.redirect("/chef/login");
+          } else {
+            res.locals.username = user.username;
+            next();
+          }
         }
       }
     );
