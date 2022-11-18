@@ -2,3 +2,68 @@
 
 /* All styles unique to pickUpTimePage */
 
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcome-text,
+.title {
+  color: var(--maroon);
+}
+
+.welcome-text {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  margin: 0;
+}
+
+.title {
+  margin: 3rem 0;
+  margin-top: 5rem;
+  font-weight: 300;
+}
+
+.time-select,
+select {
+  font-size: 1.5rem;
+}
+
+.time-select {
+  margin: 3rem 0;
+  margin-bottom: 5rem;
+}
+
+select {
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: var(--gold);
+}
+
+select::after {
+  color: red;
+}
+
+.next-btn {
+  background-color: var(--maroon);
+  outline: none;
+  border: none;
+  color: var(--gold);
+  padding: 0.5rem 1.5rem;
+  border-radius: 100rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.next-btn:hover {
+  background-color: var(--gold);
+  color: var(--maroon);
+}
