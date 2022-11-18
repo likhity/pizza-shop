@@ -8,16 +8,14 @@
 
     <!-- script Page -->
     <script src="/pickUpTimePage.js" defer></script>
-    <link rel="stylesheet" href="/css/student/pickUpTimePage.css">
+    <link rel="stylesheet" href="/css/student/pickUpTimePage.css" />
   </head>
-  
-  <body>
-    <h1><center>When is a good pick-up time?</center></h1>
 
-    <br />
-    <br />
-    <center>
-      <select name="hourTime" id="hourTime">
+  <body>
+    <p class="welcome-text">Welcome, <%= locals.asuID %>.</p>
+    <h1 class="title">When is a good pick-up time?</h1>
+    <div class="time-select">
+      <select name="hourTime" class="hour-select" id="hourTime">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -34,7 +32,7 @@
 
       <b>:</b>
 
-      <select name="minuteTime" id="minuteTime">
+      <select name="minuteTime" class="minute-select" id="minuteTime">
         <option value="00">00</option>
         <option value="05">05</option>
         <option value="10">10</option>
@@ -53,13 +51,8 @@
         <option value="am">AM</option>
         <option value="pm">PM</option>
       </select>
+    </div>
 
-      <br />
-      <br />
-
-
-    <button id="nextBtnpickTime"type="next">NEXT</button>
-
-    </center>
+    <button class="next-btn" id="nextBtnpickTime" type="next">Next</button>
   </body>
 </html>
