@@ -1,0 +1,7 @@
+@import url("/css/styles.css");
+
+/* All styles unique to Order Processor Login Page */
+
+.error {
+  color: red;
+}

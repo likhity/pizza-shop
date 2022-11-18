@@ -1,0 +1,13 @@
+@import url("/css/styles.css");
+
+/* All styles unique to chef specificOrderPage */
+
+.invisible {
+  visibility: hidden;
+}
+
+.parent {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}

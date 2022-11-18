@@ -1,0 +1,18 @@
+:root {
+  --gold: #f8e010;
+  --maroon: #a34242;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.woff2") format("woff2");
+}
+
+* {
+  font-family: Inter;
+}
+
+body {
+  width: 100vw;
+  margin: 0;
+}

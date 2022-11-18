@@ -1,0 +1,7 @@
+@import url("/css/styles.css");
+
+/* All styles unique to chef loginPage */
+
+.error {
+  color: red;
+}

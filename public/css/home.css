@@ -1,0 +1,43 @@
+@import url("/css/styles.css");
+
+/* All styles unique to home page */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Inter;
+}
+
+.links {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  display: block;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: var(--gold);
+  width: 300px;
+  height: 40px;
+  text-align: center;
+  background: var(--maroon);
+  padding: 1rem;
+  border-radius: 10rem;
+}
+
+a:hover {
+  background: var(--gold);
+  color: var(--maroon);
+}

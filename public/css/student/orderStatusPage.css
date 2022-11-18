@@ -1,0 +1,25 @@
+@import url("/css/styles.css");
+
+/* All styles unique to orderStatusPage */
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.parent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.button button {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+}

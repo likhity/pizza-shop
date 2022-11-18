@@ -1,0 +1,26 @@
+@import url("/css/styles.css");
+
+/* All styles unique to chef orderPage */
+
+.orders {
+  display: flex;
+  width: 60vw;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.order {
+  border: 1px solid black;
+  padding: 0rem 1rem;
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  text-decoration: none;
+  color: black;
+}
+.order:hover {
+  color: white;
+  background: black;
+}
+.order h6 {
+  margin: 0;
+}
