@@ -28,11 +28,14 @@ class StatusBar {
   constructor() {
     this.currentStatus = "Order Sent";
     this.htmlStatusBar = document.querySelector(".status-bar");
+    this.phoneStatusText = document.querySelector(".phone-status");
     this.htmlStatusBar.className = "status-bar order-sent";
   }
 
   setStatus(newStatus) {
     if (newStatus === this.currentStatus) return;
+
+    this.phoneStatusText.textContent = newStatus;
 
     switch (newStatus) {
       case "Accepted":
@@ -46,6 +49,7 @@ class StatusBar {
         break;
       case "Ready to Pickup":
         this.htmlStatusBar.className = "status-bar ready-to-pickup";
+        this.phoneStatusText.classList.replace("red", "green");
         break;
     }
 
