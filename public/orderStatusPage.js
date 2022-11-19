@@ -4,8 +4,8 @@ var picKUpTimeText = document.getElementById("pickUpTimeText");
 var specialInstructionsText = document.getElementById(
   "specialInstructionsText"
 );
-var orderStatusText = document.querySelector(".status");
 var cancelButton = document.getElementById("cancel-button");
+const pickUpText = document.querySelector(".pickup-text");
 
 //get orderID from client(assume each client only has one order)
 const clientOrderID = sessionStorage.getItem("ORDER_ID");
@@ -24,8 +24,38 @@ picKUpTimeText.textContent = `Pick Up Time:
 ${pickUpTimeParsedArray[0]}:${pickUpTimeParsedArray[1]} ${pickUpTimeParsedArray[2]}`;
 specialInstructionsText.textContent = `Special Instructions: ${clientPizzaOrder.specialInstructions}`;
 
-//set interval 5 seconds
-const fiveSecondInterval = setInterval(async () => {
+class StatusBar {
+  constructor() {
+    this.currentStatus = "Order Sent";
+    this.htmlStatusBar = document.querySelector(".status-bar");
+    this.htmlStatusBar.className = "status-bar order-sent";
+  }
+
+  setStatus(newStatus) {
+    if (newStatus === this.currentStatus) return;
+
+    switch (newStatus) {
+      case "Accepted":
+        this.htmlStatusBar.className = "status-bar accepted";
+        break;
+      case "Ready to Cook":
+        this.htmlStatusBar.className = "status-bar ready-to-cook";
+        break;
+      case "Cooking":
+        this.htmlStatusBar.className = "status-bar cooking";
+        break;
+      case "Ready to Pickup":
+        this.htmlStatusBar.className = "status-bar ready-to-pickup";
+        break;
+    }
+
+    this.currentStatus = newStatus;
+  }
+}
+
+const theStatusBar = new StatusBar();
+
+async function updateStatus() {
   //if orderStatus is "Ready To Pick Up"
   //break out of loop
 
@@ -40,16 +70,22 @@ const fiveSecondInterval = setInterval(async () => {
   const data = await response.json();
   const orderStatusState = data.status;
   cancelButton.disabled = orderStatusState !== "Order Sent";
-  orderStatusText.textContent = orderStatusState;
+  theStatusBar.setStatus(orderStatusState);
   if (orderStatusState === "Ready to Pickup") {
     //if order is ready to pick up we break out of loop
-    orderStatusText.classList.replace("red", "green");
     clearInterval(fiveSecondInterval);
+    sessionStorage.removeItem(STORAGE_KEY);
+    sessionStorage.removeItem("ORDER_ID");
+    pickUpText.classList.remove("invisible");
   }
-}, 5000);
+}
 
-//at this point order status is "ready to pick up"
-//need to display order to pick up and make it green
+//set interval to run updateStatus() function every 5 seconds
+const fiveSecondInterval = setInterval(updateStatus, 5000);
+
+// run the function once
+// (because the fiveSecondInterval will make its first call 5 seconds later)
+updateStatus();
 
 //CANCEL BUTTON WILL DO WITH DELETE REQUEST
 cancelButton.addEventListener("click", async (e) => {

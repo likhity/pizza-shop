@@ -6,20 +6,182 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.welcome-text {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  margin: 0;
+}
+
+.welcome-text,
+.title {
+  color: var(--maroon);
+}
+
+.title {
+  margin: 3rem 0;
+  margin-top: 5rem;
+  font-weight: 300;
+}
+
+.status-bar {
+  display: flex;
+  position: relative;
+  font-weight: 600;
+  background-color: #cd6e6e;
+  border: 5px solid var(--maroon);
+  color: var(--gold);
+  border-radius: 100rem;
+  overflow: hidden;
+  transition-property: border-color, color, background-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.status {
+  z-index: 5;
+  padding: 0.75rem 2.5rem;
+  font-size: 1rem;
+}
+
+.status-bar::after {
+  content: "";
+  background-color: var(--maroon);
+  position: absolute;
+  top: 0.75px;
+  left: 0.85px;
+  width: 130px;
+  height: 100%;
+  border-radius: 100rem;
+}
+
+.status-bar.order-sent::after {
+  animation: order_sent 1s ease-in-out forwards;
+}
+
+@keyframes order_sent {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20%;
+  }
+}
+
+.status-bar.accepted::after {
+  animation: accepted 1s ease-in-out forwards;
+}
+
+@keyframes accepted {
+  from {
+    width: 20%;
+  }
+  to {
+    width: 37%;
+  }
+}
+
+.status-bar.ready-to-cook::after {
+  animation: ready-to-cook 1s ease-in-out forwards;
+}
+
+@keyframes ready-to-cook {
+  from {
+    width: 37%;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+.status-bar.cooking::after {
+  animation: cooking 1s ease-in-out forwards;
+}
+
+@keyframes cooking {
+  from {
+    width: 60%;
+  }
+  to {
+    width: 77%;
+  }
+}
+
+.status-bar.ready-to-pickup::after {
+  animation: ready-to-pickup 1s ease-in-out forwards;
+}
+
+@keyframes ready-to-pickup {
+  from {
+    width: 77%;
+  }
+  to {
+    width: 100%;
+    background-color: #298d45;
+  }
+}
+
+.status-bar.ready-to-pickup {
+  border-color: #298d45;
+  color: white;
+  background-color: #298d45;
+}
+
+.pickup-text {
+  color: #298d45;
   font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  transition: opacity 1s ease-in-out;
 }
-.red {
-  color: red;
-}
-.green {
-  color: green;
-}
-.parent {
+
+.summary-cancel-section {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  margin-top: 2rem;
 }
-.button button {
-  font-size: 1.5rem;
-  padding: 1rem 1.5rem;
+
+.summary {
+  margin-right: 10rem;
+  font-size: 1.25rem;
+}
+
+.cancel-button {
+  font-size: 1.25rem;
+  padding: 2rem 3rem;
+  border-radius: 100rem;
+  border: none;
+  font-weight: 600;
+  background-color: #929292;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #4c4c4c;
+}
+
+.cancel-button:disabled {
+  background-color: #cfcfcf;
+  position: relative;
+}
+
+.cancel-button:disabled::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 200px;
+  transform: translate(-50%, -50%) rotate(65deg);
+  background-color: white;
 }
