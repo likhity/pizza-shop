@@ -5,17 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order Status</title>
-    <link rel="stylesheet" href="/css/student/orderStatusPage.css">
+    <link rel="stylesheet" href="/css/student/orderStatusPage.css" />
 
     <!-- NEED SCRIPT SRC (NOTE: dont need def since while loop?)-->
     <script src="/orderStatusPage.js" defer></script>
   </head>
 
   <body>
-    <p>Hello, <span id="asuID"><%= locals.asuID %></span>.</p>
-    <h1>Order Status</h1>
-    <p>Current Status: <span class="status red">Order Sent</span></p>
-    <div class="parent">
+    <p class="welcome-text">
+      Welcome, <span id="asuID"><%= locals.asuID %></span>.
+    </p>
+    <h1 class="title">Order Status</h1>
+    <div class="status-bar order-sent">
+      <div class="status">Order Sent</div>
+      <div class="status">Accepted</div>
+      <div class="status">Ready to Cook</div>
+      <div class="status">Cooking</div>
+      <div class="status">Ready to Pick Up</div>
+    </div>
+    <p class="pickup-text invisible">Your order is ready to pickup.</p>
+    <div class="summary-cancel-section">
       <div class="summary">
         <h3>Order Summary</h3>
         <p id="pizzaTypeText">Pizza Type: Pepperoni</p>
@@ -25,8 +34,8 @@
           Special Instructions: I want a third of the pizza burnt.
         </p>
       </div>
-      <div class="button">
-        <button id="cancel-button">Cancel</button>
+      <div class="cancel">
+        <button class="cancel-button" id="cancel-button">Cancel</button>
       </div>
     </div>
   </body>
