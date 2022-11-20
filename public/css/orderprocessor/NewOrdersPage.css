@@ -18,17 +18,15 @@ body {
   color: black;
   font-weight: 700;
   font-size: 1.25rem;
-  padding: 0.5rem 4rem;
+  padding: 0.75rem 4.25rem;
   border-bottom: 1px solid var(--maroon);
   cursor: pointer;
 }
-.tabs a:hover:not(.selected) {
-  text-decoration: underline;
-}
-.tabs .selected {
+.tabs .selected, .tabs a:hover {
   font-weight: 700;
   background-color: var(--maroon);
   color: var(--gold);
+  transition: background-color 100ms ease-in-out;
 }
 .orders {
   display: flex;
@@ -48,6 +46,7 @@ body {
 .order:hover {
   color: var(--gold);
   background: var(--maroon);
+  transition: background-color 100ms ease-in-out;
 }
 
 .order h3 {
