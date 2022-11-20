@@ -205,14 +205,14 @@ body {
   color: #298d45;
 }
 
-@media (width <= 900px) {
+@media (max-width: 900px) {
   .title {
     font-size: 2.25rem;
   }
 
   .status-bar {
     width: 75%;
-    border: none;
+    border: none !important;
     height: 10px;
     background-color: #d5acac;
     margin-bottom: 0;
