@@ -24,6 +24,7 @@ body {
   margin: 3rem 0;
   margin-top: 5rem;
   font-weight: 300;
+  text-align: center;
 }
 
 .time-select,
@@ -66,4 +67,10 @@ select::after {
 .next-btn:hover {
   background-color: var(--gold);
   color: var(--maroon);
+}
+
+@media (max-width: 900px) {
+  .title {
+    max-width: 80%;
+  }
 }
