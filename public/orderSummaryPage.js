@@ -42,10 +42,6 @@ nextBtn.addEventListener("click", async (e) => {
   //returns orderID
   //add to sessionStorage (should be local/time constraint)
   const data = await response.json();
-  const clientOrderID = data.orderID;
-  console.log(clientOrderID);
-
-  sessionStorage.setItem("ORDER_ID", clientOrderID);
 
   if (data.success) {
     location.assign("/student/view-order-status");
