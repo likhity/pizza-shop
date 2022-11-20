@@ -189,8 +189,6 @@ body {
 
 .phone-status {
   display: none;
-  /* white-space: nowrap; */
-  /* max-width: 50%; */
   text-align: center;
   font-size: 1.75rem;
   margin: 0;
