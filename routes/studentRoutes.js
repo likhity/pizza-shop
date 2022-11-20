@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const studentController = require("../controllers/studentController");
 const { requireStudentAuth } = require("../middleware/authMiddleware");
+const checkStudentHasOrder = require("../middleware/checkStudentHasOrder");
 
 const router = Router();
 
@@ -11,10 +12,10 @@ const router = Router();
 router.use(requireStudentAuth);
 
 // These routes render pages
-router.get("/customize-pizza", studentController.customize_pizza_get);
-router.get("/pickup-time", studentController.pickup_time_get);
-router.get("/special-instructions", studentController.special_instructions_get);
-router.get("/order-summary", studentController.order_summary_get);
+router.get("/customize-pizza", checkStudentHasOrder, studentController.customize_pizza_get);
+router.get("/pickup-time", checkStudentHasOrder, studentController.pickup_time_get);
+router.get("/special-instructions",checkStudentHasOrder, studentController.special_instructions_get);
+router.get("/order-summary", checkStudentHasOrder, studentController.order_summary_get);
 router.get("/view-order-status", studentController.view_order_status_get);
 
 /**
@@ -25,6 +26,6 @@ router.get("/view-order-status", studentController.view_order_status_get);
  */
 router.post("/create-order", studentController.create_order_post);
 router.delete("/cancel-order", studentController.cancel_order_delete);
-router.get("/order-status/:orderID", studentController.order_status_get);
+router.get("/order-status/:studentID", studentController.order_status_get);
 
 module.exports = router;

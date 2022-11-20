@@ -28,11 +28,12 @@
     <div class="summary-cancel-section">
       <div class="summary">
         <h3>Order Summary</h3>
-        <p id="pizzaTypeText">Pizza Type: Pepperoni</p>
-        <p id="toppingsText">Toppings: Mushroom, Onion</p>
-        <p id="pickUpTimeText">Pick-Up Time: 3:00 AM</p>
+        <p id="pizzaTypeText">Pizza Type: <%= order.pizzaType %> </p>
+        <p id="toppingsText">Toppings: <%= order.toppings.join(", ") %> </p>
+        <% const split = order.pickUpTime.split(" ") %>
+        <p id="pickUpTimeText">Pick-Up Time: <%= split[0] %>:<%= split[1] %> <%= split[2] %>   </p>
         <p id="specialInstructionsText">
-          Special Instructions: I want a third of the pizza burnt.
+          Special Instructions: <%= order.specialInstructions %> 
         </p>
       </div>
       <div class="cancel">

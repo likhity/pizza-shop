@@ -22,8 +22,17 @@ module.exports.special_instructions_get = (req, res) => {
   res.render("student/specialInstructions");
 };
 
-module.exports.view_order_status_get = (req, res) => {
-  res.render("student/orderStatusPage");
+module.exports.view_order_status_get = async (req, res) => {
+  const { asuID } = res.locals;
+  const order =
+      (await Order.findOne({ studentID: asuID })) ||
+      (await AcceptedOrder.findOne({ studentID: asuID }));
+  
+  if (order) {
+    res.render("student/orderStatusPage", { order });
+  } else {
+    res.redirect("/student/customize-pizza");
+  }
 };
 
 module.exports.create_order_post = async (req, res) => {
@@ -47,7 +56,7 @@ module.exports.create_order_post = async (req, res) => {
     //return ok status success:true & orderID
     newOrder.save().then((result) => {
       console.log(result);
-      res.status(201).json({ success: true, orderID });
+      res.status(201).json({ success: true });
     });
   } catch (err) {
     res.status(400).json({ success: false });
@@ -56,9 +65,9 @@ module.exports.create_order_post = async (req, res) => {
 
 module.exports.cancel_order_delete = async (req, res) => {
   try {
-    const { orderID } = req.body;
+    const { studentID } = req.body;
 
-    await Order.deleteOne({ orderID });
+    await Order.deleteOne({ studentID });
 
     res.status(200).json({ success: true });
   } catch (err) {
@@ -69,7 +78,7 @@ module.exports.cancel_order_delete = async (req, res) => {
 module.exports.order_status_get = async (req, res) => {
   try {
     //we received orderID from client
-    const { orderID } = req.params;
+    const { studentID } = req.params;
 
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -78,8 +87,8 @@ module.exports.order_status_get = async (req, res) => {
     //try to find client's orderID in pending orders (order) database
     //or try to find in acceptedOrders
     const order =
-      (await Order.findOne({ orderID })) ||
-      (await AcceptedOrder.findOne({ orderID }));
+      (await Order.findOne({ studentID })) ||
+      (await AcceptedOrder.findOne({ studentID }));
 
     //we find order and check what collection it belongs to in the database
 

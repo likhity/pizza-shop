@@ -1,28 +1,11 @@
-var pizzaTypeText = document.getElementById("pizzaTypeText");
-var toppingsText = document.getElementById("toppingsText");
-var picKUpTimeText = document.getElementById("pickUpTimeText");
-var specialInstructionsText = document.getElementById(
-  "specialInstructionsText"
-);
-var cancelButton = document.getElementById("cancel-button");
+const cancelButton = document.getElementById("cancel-button");
 const pickUpText = document.querySelector(".pickup-text");
 
 //get orderID from client(assume each client only has one order)
-const clientOrderID = sessionStorage.getItem("ORDER_ID");
+const clientStudentID = document.getElementById("asuID").textContent;
 
 //get order from client
 const STORAGE_KEY = "SUN_DEVIL_PIZZA_ORDER";
-const clientPizzaOrder = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-
-pizzaTypeText.textContent = `Pizza Type: ${clientPizzaOrder.pizzaType}`;
-clientPizzaOrder;
-//parse pickUpTime sessionStorage
-const pickUpTimeParsedArray = clientPizzaOrder.pickUpTime.split(" ");
-
-//NOTE: format of pickUpTime is "8 40 pm"
-picKUpTimeText.textContent = `Pick Up Time: 
-${pickUpTimeParsedArray[0]}:${pickUpTimeParsedArray[1]} ${pickUpTimeParsedArray[2]}`;
-specialInstructionsText.textContent = `Special Instructions: ${clientPizzaOrder.specialInstructions}`;
 
 class StatusBar {
   constructor() {
@@ -67,7 +50,7 @@ async function updateStatus() {
   //NOTE: this is based on student controllers
   //if modelName = "acceptedOrder" =>returns order.orderStatus (accepted/cookings/readypickUp)
   //else => returns status of "Order Sent"
-  const response = await fetch(`/student/order-status/${clientOrderID}`, {
+  const response = await fetch(`/student/order-status/${clientStudentID}`, {
     method: "GET",
   });
 
@@ -79,7 +62,6 @@ async function updateStatus() {
     //if order is ready to pick up we break out of loop
     clearInterval(fiveSecondInterval);
     sessionStorage.removeItem(STORAGE_KEY);
-    sessionStorage.removeItem("ORDER_ID");
     pickUpText.classList.remove("invisible");
   }
 }
@@ -93,15 +75,13 @@ updateStatus();
 
 //CANCEL BUTTON WILL DO WITH DELETE REQUEST
 cancelButton.addEventListener("click", async (e) => {
-  console.log(clientOrderID);
   e.preventDefault();
   await fetch("/student/cancel-order", {
     method: "DELETE",
-    body: JSON.stringify({ orderID: clientOrderID }),
+    body: JSON.stringify({ studentID: clientStudentID }),
     headers: { "Content-Type": "application/json" },
   });
   clearInterval(fiveSecondInterval);
   sessionStorage.removeItem(STORAGE_KEY);
-  sessionStorage.removeItem("ORDER_ID");
   location.assign("/student/customize-pizza");
 });
