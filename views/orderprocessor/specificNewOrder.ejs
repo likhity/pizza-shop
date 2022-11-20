@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order #113a</title>
+    <title>Order #<%= specificNewOrder.orderID %> </title>
 
 <script> 
   let mongoOrderID = "<%= specificNewOrder._id  %>";
@@ -38,12 +38,18 @@
 
     <div class="parent">
       <div class="order-details">
-        <h3>Order</h3>
-        <h3 id="specificNewOrderID"><%= specificNewOrder.orderID %></h3>
-        <p><strong>Pick up time: </strong>        <%= specificNewOrder.pickUpTime %>         </p>
+        <h3>Order #<span id="specificNewOrderID"><%= specificNewOrder.orderID %></span></h3>
         <p><strong>Pizza Type: </strong>          <%= specificNewOrder.pizzaType %>          </p>
-        <p><strong>Toppings: </strong>            <%= specificNewOrder.toppings %>           </p>
-        <p><strong>Special Instructions: </strong><%= specificNewOrder.specialInstructions %></p>
+        <p><strong>Toppings: </strong></p>
+        <ul>
+          <% specificNewOrder.toppings.forEach(topping => { %> 
+            <li><%= topping %></li>
+          <% }) %> 
+        </ul>
+        <% const split = specificNewOrder.pickUpTime.split(' ') %> 
+        <p><strong>Pick up time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2] %>           </p>
+        <p style="margin-bottom: 0;"><strong>Special Instructions: </strong></p>
+        <p style="margin: 0;"><%= specificNewOrder.specialInstructions %></p>
       </div>
 
 
@@ -51,7 +57,7 @@
       
       <div class="buttons">
 
-        <button id="accept-button">Accept</button>
+        <button class="accept-button" id="accept-button">Accept</button>
         <!-- we decided orderProcessor cant cancel orders -->
 
       
