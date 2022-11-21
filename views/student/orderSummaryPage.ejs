@@ -5,40 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      form {
-        display: inline;
-      }
-    </style>
     <link rel="stylesheet" href="/css/student/orderSummaryPage.css">
     <script src="/orderSummaryPage.js" defer></script>
 </head>
-
-
-
-
   <body>
-    <p>Welcome, <span id="asuID"><%= locals.asuID %></span>.</p>
-    <center>
-      <h1>Order Summary</h1>
-      <br />
-      <p id="pizzaType">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
-      <br />
-      <p id="toppings">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
-      <br />
-      <p id="pickUpTime">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
-      <br />
-      <p id="specialInstructions">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
-
-
-        <button id="editBtn" type="button">EDIT</button>
-
-
-
-      <form >
-        <button id="submit">SUBMIT ORDER</button>
-      </form>
-
-    </center>
+    <p class="welcome-text">Welcome, <span id="asuID"><%= locals.asuID %></span>.</p>
+      <h1 class="title">Order Summary</h1>
+      <p class="order-detail" id="pizzaType">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
+      <p class="order-detail" id="toppings">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
+      <p class="order-detail" id="pickUpTime">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
+      <p class="order-detail" id="specialInstructions">NOTE INFORMATION HERE REPLACED IN JAVASCRIPT</p>
+      <div class="buttons">
+        <button class="edit-btn" id="editBtn" type="button">Edit</button>
+        <button class="submit-btn" id="submit">Submit</button>
+      </div>
   </body>
 </html>

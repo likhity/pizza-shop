@@ -10,13 +10,13 @@ const order = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
 
 //textContent is equal to order's pizzaType/toppings
 pizzaTypeText.textContent = `Pizza Type: ${order.pizzaType}`;
-toppingsText.textContent = `Toppings: ${order.toppings}`;
+toppingsText.textContent = `Toppings: ${order.toppings.join(", ")}`;
 
 //parse pickUpTime sessionStorage
 const pickUpTimeParsedArray = order.pickUpTime.split(" ");
 
 //NOTE: format of pickUpTime is "8 40 pm"
-pickUptimeText.textContent = `Pick Up Time: 
+pickUptimeText.textContent = `Pick-Up Time: 
 ${pickUpTimeParsedArray[0]}:${pickUpTimeParsedArray[1]} ${pickUpTimeParsedArray[2]}`;
 specialInstructionsText.textContent = `Special Instructions: ${order.specialInstructions}`;
 
