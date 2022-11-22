@@ -23,28 +23,29 @@
 
 
 
-  <div class="orders">
+  
+  <% if (arrayOfAcceptedOrdersDB.length > 0) { %>
+    
+    <div class="orders">
+      <% arrayOfAcceptedOrdersDB.forEach(acceptedOrder => { %>
 
-    <% if (arrayOfAcceptedOrdersDB.length > 0) { %>
-
-      <% arrayOfAcceptedOrdersDB.forEach(arrayOfAcceptedOrdersDB => { %>
-
-        <a class="order" href="/orderprocessor/individual-accepted-order/<%= arrayOfAcceptedOrdersDB._id %>">
-          <h3>Order <%= arrayOfAcceptedOrdersDB.orderID %>   </h6>
-          <p><strong>Pick up time: </strong> <%= arrayOfAcceptedOrdersDB.pickUpTime %>        </p>
-          <p><strong>Pizza Type: </strong>   <%= arrayOfAcceptedOrdersDB.pizzaType %>        </p>
-          <p><strong>Toppings: </strong>     <%= arrayOfAcceptedOrdersDB.toppings%>        </p>
+        <a class="order" href="/orderprocessor/individual-accepted-order/<%= acceptedOrder._id %>">
+          <h3><%= acceptedOrder.orderID %>   </h6>
+          <% const split = acceptedOrder.pickUpTime.split(" ") %>
+          <p><b>Pick-up time: </b> <%= split[0] %>:<%= split[1] %> <%= split[2] %>        </p>
+          <p><b>Pizza Type: </b>   <%= acceptedOrder.pizzaType %>        </p>
+          <p><b>Toppings: </b>     <%= acceptedOrder.toppings.join(", ") %>        </p>
         </a>
 
     <% }) %> 
+  </div>
     <% } else { %>
 
-      <p>There are no AcceptedOrders</p>
+      <p>There are no Accepted orders.</p>
 
-      <% } %> 
+    <% } %> 
 
 
-  </div>
 
 
 
