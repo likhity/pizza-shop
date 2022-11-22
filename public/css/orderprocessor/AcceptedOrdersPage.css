@@ -30,7 +30,7 @@ body {
 }
 .orders {
   display: flex;
-  max-width: 60vw;
+  width: 900px;
   gap: 1rem;
   flex-wrap: wrap;
 }

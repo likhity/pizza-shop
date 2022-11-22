@@ -28,15 +28,15 @@
 
     <div class="orders">
 
-      <% arrayOfOrdersDB.forEach(arrayOfOrdersDB => { %>
+      <% arrayOfOrdersDB.forEach(newOrder => { %>
         <!-- each anchor tag is wrapped with a link using its ID FROM MONGO DB -->
-        <a class="order" href="/orderprocessor/individual-new-order/<%= arrayOfOrdersDB._id %> ">
+        <a class="order" href="/orderprocessor/individual-new-order/<%= newOrder._id %> ">
           <!-- each anchor tag contains information based on its own object -->
-          <h3><%= arrayOfOrdersDB.orderID %></h3>
-          <% const split = arrayOfOrdersDB.pickUpTime.split(" ") %>
+          <h3><%= newOrder.orderID %></h3>
+          <% const split = newOrder.pickUpTime.split(" ") %>
           <p>   <b>Pick Up Time: </b><%= split[0] %>:<%= split[1] %> <%= split[2] %>   </p>
-          <p>   <b>Pizza Type: </b><%= arrayOfOrdersDB.pizzaType %>   </p>
-          <p>   <b>Toppings: </b><%= arrayOfOrdersDB.toppings.join(", ") %>    </p>
+          <p>   <b>Pizza Type: </b><%= newOrder.pizzaType %>   </p>
+          <p>   <b>Toppings: </b><%= newOrder.toppings.join(", ") %>    </p>
         </a>
       <% }) %> 
 
