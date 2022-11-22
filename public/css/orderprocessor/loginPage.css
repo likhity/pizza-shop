@@ -2,6 +2,60 @@
 
 /* All styles unique to Order Processor Login Page */
 
+body{
+
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.title {
+  font-weight: 400;
+  color: var(--maroon);
+  margin-top: 5rem;
+  font-size: 2.5rem;
+  margin-bottom: 7.5rem;
+}
+.username-input{
+  font-size: 1rem;
+  border: none;
+  border-bottom: 3px solid black;
+  padding: 0.5rem 0;
+  width: 450px;
+  margin-right:15px;
+  outline:none;
+}
+.username-input::placeholder{
+  color:#bbb;
+}
+
+.password-input{
+  font-size: 1rem;
+  border: none;
+  border-bottom: 3px solid black;
+  padding: 0.5rem 0;
+  width: 450px;
+  margin-right:15px; 
+  outline:none;
+
+}
+.password-input::placeholder{
+  color:#bbb;
+}
+
+.login-btn{
+  border:none;
+  background-color: var(--maroon);
+  color:var(--gold);
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  border-radius: 100rem;
+}
+.login-btn:hover{
+background-color: var(--gold);
+color: var(--maroon);
+}
+
 .error {
   color: red;
 }

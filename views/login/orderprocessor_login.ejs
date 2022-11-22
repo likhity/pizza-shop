@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="/css/orderprocessor/loginPage.css" />
   </head>
   <body>
-    <h1>Welcome, Order Processor.</h1>
+    <h1 class = "title">Welcome, Order Processor.</h1> <!-- class = "title -->
     <form id="order-login" action="">
-      <input type="text" name="username" id="username" placeholder="User ID" />
+      <input 
+        class="username-input"
+        type="text" 
+        name="username" 
+        id="username" 
+        placeholder="User ID" />
+        <br>
       <input
+        class="password-input"
         type="password"
         name="password"
         id="password"
         placeholder="Password"
       />
-      <button name="loginButton" type="submit">Login</button>
+      <button class = "login-btn" name="loginButton" type="submit">Login</button>
     </form>
     <p class="error"></p>
     <p>Click <a href="https://docs.google.com/document/d/16wVwlYFLdoR3FhCw2hppCdV4M2kaN59-p7OZsHdOlvg/edit?usp=sharing">here</a> for sample login details to test the application.</p>
