@@ -22,16 +22,15 @@
   </div>
 
   
-  <div class="orders">
   
-    <!-- if we have a least one order -->
-    <% if (arrayOfOrdersDB.length > 0) { %>
-      
+  <!-- if we have a least one order -->
+  <% if (arrayOfOrdersDB.length > 0) { %>
+
+    <div class="orders">
+
       <% arrayOfOrdersDB.forEach(arrayOfOrdersDB => { %>
-     
         <!-- each anchor tag is wrapped with a link using its ID FROM MONGO DB -->
         <a class="order" href="/orderprocessor/individual-new-order/<%= arrayOfOrdersDB._id %> ">
-
           <!-- each anchor tag contains information based on its own object -->
           <h3><%= arrayOfOrdersDB.orderID %></h3>
           <% const split = arrayOfOrdersDB.pickUpTime.split(" ") %>
@@ -39,16 +38,17 @@
           <p>   <b>Pizza Type: </b><%= arrayOfOrdersDB.pizzaType %>   </p>
           <p>   <b>Toppings: </b><%= arrayOfOrdersDB.toppings.join(", ") %>    </p>
         </a>
+      <% }) %> 
 
-        <% }) %> 
-    <% } else { %>
+    </div>
+
+  <% } else { %>
 
       <p>There are no pending orders to be accepted.</p>
 
-      <% } %> 
+  <% } %> 
 
       
-  </div>
 
 </body>
 </body>
