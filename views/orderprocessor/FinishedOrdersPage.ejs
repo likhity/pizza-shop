@@ -13,24 +13,25 @@
     <a href="/orderprocessor/accepted-orders"><center>Accepted Orders</center></a>
     <a href="/orderprocessor/finished-orders" class="selected"><center>Finished Orders</center></a>
   </div>
-  <div class="orders">
-    <% if (FinishedOrdersList.length > 0) { %>
+  <% if (FinishedOrdersList.length > 0) { %>
+    <div class="orders">
 
       <% FinishedOrdersList.forEach(finishedOrder => { %>
         <a class="order" href="/orderprocessor/individual-finished-order/<%= finishedOrder.orderID %>">
-          <h3>Order <%= finishedOrder.orderID %></h3>
-          <p><strong>Pick up time: </strong> <%= finishedOrder.pickUpTime %>        </p>
+          <h3><%= finishedOrder.orderID %></h3>
+          <% const split = finishedOrder.pickUpTime.split(" ") %>
+          <p><strong>Pick-up time: </strong> <%= split[0] %>:<%= split[1] %> <%= split[2] %>       </p>
           <p><strong>Pizza Type: </strong>   <%= finishedOrder.pizzaType %>        </p>
-          <p><strong>Toppings: </strong>     <%= finishedOrder.toppings%>        </p>
+          <p><strong>Toppings: </strong>     <%= finishedOrder.toppings.join(", ") %>        </p>
         </a>
-      <% }) %>
+        <% }) %>
+      </div>
     
     <% } else { %>
 
       <p>There are no Finished orders.</p>
 
     <% } %> 
-  </div>
 </body>
 </body>
 </html>
