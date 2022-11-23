@@ -20,7 +20,7 @@
         <a class="order" href="/orderprocessor/individual-finished-order/<%= finishedOrder.orderID %>">
           <h3><%= finishedOrder.orderID %></h3>
           <% const split = finishedOrder.pickUpTime.split(" ") %>
-          <p><strong>Pick-up time: </strong> <%= split[0] %>:<%= split[1] %> <%= split[2] %>       </p>
+          <p><strong>Pick Up Time: </strong> <%= split[0] %>:<%= split[1] %> <%= split[2] %>       </p>
           <p><strong>Pizza Type: </strong>   <%= finishedOrder.pizzaType %>        </p>
           <p><strong>Toppings: </strong>     <%= finishedOrder.toppings.join(", ") %>        </p>
         </a>
