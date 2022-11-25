@@ -14,32 +14,39 @@
 
   
   <body>
-    <h1>Order <%= specificOrder.orderID %></h1>
+    <h1 class="title">Order <%= specificOrder.orderID %></h1>
     <div class="parent">
-      <div class="button">
+      <div class="buttons">
         
         <% if (specificOrder.orderStatus === "Accepted") { %> 
           <button id="ready-to-cook-button" class="red">Ready to Cook</button>
           <button id="in-the-oven-button" class="red invisible" disabled>Cooking</button>
-          <button id="ready-to-pick-up-button" class="red invisible" disabled>Ready to Pickup</button>
+          <button id="ready-to-pick-up-button" class="green invisible" disabled>Ready to Pickup</button>
 
         <% } else if (specificOrder.orderStatus === "Ready to Cook") { %>
           <button id="ready-to-cook-button" class="red invisible" disabled>Ready to Cook</button>
           <button id="in-the-oven-button" class="red">Cooking</button>
-          <button id="ready-to-pick-up-button" class="red invisible" disabled>Ready to Pickup</button>
+          <button id="ready-to-pick-up-button" class="green invisible" disabled>Ready to Pickup</button>
 
         <% } else { %>
           <button id="ready-to-cook-button" class="red invisible" disabled>Ready to Cook</button>
           <button id="in-the-oven-button" class="red invisible" disabled>Cooking</button>
-          <button id="ready-to-pick-up-button" class="red">Ready to Pickup</button>
+          <button id="ready-to-pick-up-button" class="green">Ready to Pickup</button>
           
         <% } %> 
       </div>
       <div class="order-details">
-        <p><strong>Pick up time: </strong><%= specificOrder.pickUpTime %></p>
+        <% const split = specificOrder.pickUpTime.split(" ") %> 
+        <p><strong>Pick Up Time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2] %>  </p>
         <p><strong>Pizza Type: </strong><%= specificOrder.pizzaType %></p>
-        <p><strong>Toppings: </strong><%= specificOrder.toppings %></p>
-        <p><strong>Special Instructions: </strong><%= specificOrder.specialInstructions %></p>
+        <p><strong>Toppings:</strong></p>
+        <ul>
+          <% specificOrder.toppings.forEach(topping => { %> 
+            <li><%= topping %></li>
+          <% }) %> 
+        </ul>
+        <p style="margin-bottom: 0;"><strong>Special Instructions: </strong></p>
+        <p style="margin: 0;"><%= specificOrder.specialInstructions %></p>
       </div>
     </div>
   </body>
