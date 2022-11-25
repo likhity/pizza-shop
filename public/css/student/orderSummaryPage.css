@@ -58,3 +58,13 @@ body {
   color: var(--gold);
   font-size: 1.25rem;
 }
+
+.submit-btn:hover{
+  background: var(--gold);
+  color: var(--maroon);
+}
+
+.edit-btn:hover{
+  color: white;
+  background: rgb(0, 0, 0);
+}
