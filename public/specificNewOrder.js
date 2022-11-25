@@ -1,31 +1,11 @@
-const newOrdersTab = document.getElementById("NewOrdersTabs");
-const acceptedOrdersTab = document.getElementById("AcceptedOrdersTabs");
-const finishedOrdersTab = document.getElementById("FinishedOrdersTabs");
 const acceptButton = document.getElementById("accept-button");
 const cancelButton = document.getElementById("cancel-button");
 const specificNewOrderID = document.getElementById("specificNewOrderID");
 
 
-//newOrdersTab will open newOrdersPage
-newOrdersTab.addEventListener("click", (e) => {
-    console.log("neworders")
-    window.location.assign("/orderprocessor/new-orders");
-});
-
-//acceptedOrdersTab will load all accepted orders
-acceptedOrdersTab.addEventListener("click", (e) => {
-    console.log("acceptedOrders")
-    window.location.assign("/orderprocessor/accepted-orders");
-});
-
-//finishedOrdersTab will load all finishedOrders
-finishedOrdersTab.addEventListener("click", (e) => {
-    console.log("finishedOrders")
-    window.location.assign("/orderprocessor/finished-orders");
-});
-
-
-
+//==========================================================================
+// deleted tab event listeners and instead added href to link between pages
+//==========================================================================
 
 
 //accept button will copy information from pending orders(orders) collection into acceptedOrders collections

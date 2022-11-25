@@ -1,6 +1,6 @@
-const newOrdersTab = document.getElementById("NewOrdersTabs");
-const acceptedOrdersTab = document.getElementById("AcceptedOrdersTabs");
-const finishedOrdersTab = document.getElementById("FinishedOrdersTabs");
+// const newOrdersTab = document.getElementById("NewOrdersTabs");
+// const acceptedOrdersTab = document.getElementById("AcceptedOrdersTabs");
+// const finishedOrdersTab = document.getElementById("FinishedOrdersTabs");
 const orderStatusText = document.querySelector(".status");
 const pickUpButton = document.getElementById("order-picked-up-button");
 
@@ -28,24 +28,8 @@ const fiveSecondInterval = setInterval(async () => {
   }
 }, 5000);
 
-//======================= TABS =========================
-//newOrdersTab will open newOrdersPage
-newOrdersTab.addEventListener("click", (e) => {
-  console.log("neworders");
-  window.location.assign("/orderprocessor/new-orders");
-});
-
-//acceptedOrdersTab will load all accepted orders
-acceptedOrdersTab.addEventListener("click", (e) => {
-  console.log("acceptedOrders");
-  window.location.assign("/orderprocessor/accepted-orders");
-});
-
-//finishedOrdersTab will load all finishedOrders
-finishedOrdersTab.addEventListener("click", (e) => {
-  console.log("finishedOrders");
-  window.location.assign("/orderprocessor/finished-orders");
-});
+//===============================================================================
+//tab event listeners were deleted and implemented in ejs/html with href instead
 //===============================================================================
 
 //pickUpButton will move order from AcceptedOrders collections into FinishedOrders
