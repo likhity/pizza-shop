@@ -4,29 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order #<%= specificNewOrder.orderID %> </title>
 
-<script> 
-  let mongoOrderID = "<%= specificNewOrder._id  %>";
-  console.log("beforefirstscript");
-  console.log(mongoOrderID);
-  console.log("afterfirstscript");
-</script>
+    <title>New Order #<%= specificNewOrder.orderID %> </title>
 
+    <script> 
+      let mongoOrderID = "<%= specificNewOrder._id  %>";
+    </script>
 
-<script src="/specificNewOrder.js" defer></script>
+    <script src="/specificNewOrder.js" defer></script>
 
-<link rel="stylesheet" href="/css/orderprocessor/specificNewOrder.css">
-
+    <link rel="stylesheet" href="/css/orderprocessor/specificNewOrder.css">
   </head>
 
-
-
   <body>
-
-
-
-
 
     <div class="tabs">
       <a href="/orderprocessor/new-orders" class="selected"><center>New Orders</center></a>
@@ -34,44 +24,31 @@
       <a href="/orderprocessor/finished-orders"><center>Finished Orders</center></a>
     </div>
 
-
-
     <div class="parent">
       <div class="order-details">
         <h3>Order #<span id="specificNewOrderID"><%= specificNewOrder.orderID %></span></h3>
         <p><strong>Pizza Type: </strong>          <%= specificNewOrder.pizzaType %>          </p>
-        <p><strong>Toppings: </strong></p>
+        <p><strong>Toppings:</strong></p>
         <ul>
           <% specificNewOrder.toppings.forEach(topping => { %> 
             <li><%= topping %></li>
           <% }) %> 
         </ul>
         <% const split = specificNewOrder.pickUpTime.split(' ') %> 
-        <p><strong>Pick up time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2] %>           </p>
+        <p><strong>Pick Up Time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2].toUpperCase() %>           </p>
         <p style="margin-bottom: 0;"><strong>Special Instructions: </strong></p>
         <p style="margin: 0;"><%= specificNewOrder.specialInstructions %></p>
       </div>
 
-
-
-      
       <div class="buttons">
 
         <button class="accept-button" id="accept-button">Accept</button>
         <!-- we decided orderProcessor cant cancel orders -->
 
-      
       </div>
 
     </div>
 
-
-
-
-
-
   </body>
-
-
 
 </html>
