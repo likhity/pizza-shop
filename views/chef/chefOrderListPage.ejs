@@ -8,28 +8,31 @@
         <link rel="stylesheet" href="/css/chef/chefOrderListPage.css">
       </head>
       <body>
-        <h1>Orders</h1>
-        <div class="orders">
+        <h1 class="title">Orders</h1>
+        
 
           <% if (acceptedOrdersList.length > 0) { %>
+
+            <div class="orders">
 
             <% acceptedOrdersList.forEach(acceptedOrder => { %>
 
               <a class="order" href="/chef/order/<%= acceptedOrder.orderID %>">
-                <h3>Order <%= acceptedOrder.orderID %>   </h6>
-                <p><strong>Pick up time: </strong> <%= acceptedOrder.pickUpTime %>        </p>
+                <h3><%= acceptedOrder.orderID %></h3>
+                  <% const split = acceptedOrder.pickUpTime.split(" ") %>
+          <p><strong>Pick Up Time: </strong> <%= split[0] %>:<%= split[1] %> <%= split[2] %>       </p>
                 <p><strong>Pizza Type: </strong>   <%= acceptedOrder.pizzaType %>        </p>
-                <p><strong>Toppings: </strong>     <%= acceptedOrder.toppings%>        </p>
+                <p><strong>Toppings: </strong>     <%= acceptedOrder.toppings.join(", ") %>        </p>
               </a>
           
           <% }) %> 
+            </div>
           <% } else { %>
       
-            <p>There are no Orders</p>
+            <p>There are no Orders.</p>
       
           <% } %> 
             
-          </div>
         </body>        
         
         </html>
