@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order #113a</title>
+  <title>Finished Order #<%= specificFinishedOrder.orderID %></title>
   <link rel="stylesheet" href="/css/orderprocessor/specificFinishedOrder.css">
 </head>
 <body>
@@ -15,11 +15,18 @@
   </div>
   <div class="parent">
     <div class="order-details">
-      <h3>Order <%= specificFinishedOrder.orderID %></h3>
-      <p><strong>Pick up time: </strong> <%= specificFinishedOrder.pickUpTime %> </p>
+      <h3>Order #<%= specificFinishedOrder.orderID %></h3>
+      <% const split = specificFinishedOrder.pickUpTime.split(' ') %>
+      <p><strong>Pick Up Time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2].toUpperCase() %> </p>
       <p><strong>Pizza Type: </strong><%= specificFinishedOrder.pizzaType %></p>
-      <p><strong>Toppings: </strong><%= specificFinishedOrder.toppings %></p>
-      <p><strong>Special Instructions: </strong><%= specificFinishedOrder.specialInstructions %></p>
+      <p><strong>Toppings: </strong></p>
+      <ul>
+        <% specificFinishedOrder.toppings.forEach(topping => { %> 
+          <li><%= topping %></li>
+        <% }) %> 
+      </ul>
+      <p style="margin-bottom: 0;"><strong>Special Instructions: </strong></p>
+      <p style="margin: 0;"><%= specificFinishedOrder.specialInstructions %></p>
     </div>
     <div class="buttons">
       <p>Amount Charged: <span class="amount-paid">$<%= specificFinishedOrder.amountPaid %>.00</span></p>
