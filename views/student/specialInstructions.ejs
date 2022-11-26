@@ -11,24 +11,22 @@
 
 
   <body>
-    <h1><center>Any Special Instructions?</center></h1>
-
-    <center>
+    <p class="welcome-text">Welcome, <span id="asuID"><%= locals.asuID %></span>.</p>
+    <h1 class="title">Any Special Instructions?</h1>
 
         <textarea
           name="specialInstructions"
           id="specialInstructions"
           cols="50"
-          rows="20"
-          placeholder="Enter Special Instructions Here..."
+          rows="10"
+          placeholder="Enter special instructions..."
         >
         </textarea>
         
         <br />
 
-
-        <button id="nextBtn"type="next">NEXT</button>
-
-    </center>
+        <div class="buttons">
+          <button class="next-btn" id="nextBtn" type="next">Next</button>
+        </div>
   </body>
 </html>
