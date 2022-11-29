@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order #113a</title>
+    <title>Order #<%= specificAcceptedOrder.orderID %></title>
 
     <!-- save "specificAcceptedOrder" we recieved from server (orderProccessorController) into "thisSpecificAcceptedOrder" -->
     <script>
-      let mongoOrderID = "<%= specificAcceptedOrder._id %>";
+      let mongoOrderID = "<%= specificAcceptedOrder._id %>";  
     </script>
 
     <script src="/specificAcceptedOrder.js" defer></script>
@@ -25,9 +25,9 @@
     <div class="parent">
       <div class="order-details">
         <h3>Order <%= specificAcceptedOrder.orderID %></h3>
+        <% const split = specificAcceptedOrder.pickUpTime.split(' ') %> 
         <p>
-          <strong>Pick up time: </strong> <%= specificAcceptedOrder.pickUpTime
-          %>
+          <strong>Pick up time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2] %>
         </p>
         <p>
           <strong>Pizza Type: </strong> <%= specificAcceptedOrder.pizzaType %>
@@ -53,9 +53,9 @@
           <% } %>
         </p>
         <% if (specificAcceptedOrder.orderStatus === "Ready to Pickup") { %>
-        <button id="order-picked-up-button">Order Picked Up</button>
+        <button class="order-picked-up-button" id="order-picked-up-button">Order Picked Up</button>
         <% } else { %>
-        <button id="order-picked-up-button" disabled>Order Picked Up</button>
+        <button class="order-picked-up-button-disabled" id="order-picked-up-button" disabled>Order Picked Up</button>
         <% } %>
       </div>
     </div>
