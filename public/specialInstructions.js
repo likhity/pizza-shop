@@ -18,7 +18,6 @@ nxtBtn.addEventListener("click", (e) => {
     //set order's special instructions (from sessionStorage)
     //reStoreSessionStorage w/ new specialInstructions
     userInputTextArea = textArea.value;
-    console.log(userInputTextArea);
     order.specialInstructions = userInputTextArea;
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(order));
 

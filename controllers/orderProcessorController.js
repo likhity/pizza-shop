@@ -111,13 +111,11 @@ const accept_order_post = async (req, res) => {
     //get orderID
     //since post we get information in body
     const mongoOrderID = req.body.mongoOrderID;
-    console.log(mongoOrderID);
 
     // get the newOrder from the database
 
     //findbyID finds mongoOrderID finds using string
     const newOrder = await Order.findById(mongoOrderID);
-    console.log(newOrder);
 
     // create new accepted order with the exact same order details
     const newAcceptedOrder = new AcceptedOrder({

@@ -12,15 +12,12 @@ const specificNewOrderID = document.getElementById("specificNewOrderID");
 acceptButton.addEventListener("click", async (e) => {
 
 
-    console.log("inside listen");
     e.preventDefault();
     
     
     //mongoOrderID was got in EJS file
-    console.log(mongoOrderID);
     
     //this is a string not a json
-    console.log(JSON.stringify({mongoOrderID: mongoOrderID}));
 
     //send mongoOrderID
     const response = await fetch("/orderprocessor/accept-order", { ///id as parameter?

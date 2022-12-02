@@ -52,7 +52,6 @@ const create_order_post = async (req, res) => {
     //save order to database
     //return ok status success:true & orderID
     newOrder.save().then((result) => {
-      console.log(result);
       res.status(201).json({ success: true });
     });
   } catch (err) {

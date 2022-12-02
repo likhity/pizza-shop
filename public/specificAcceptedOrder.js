@@ -36,7 +36,6 @@ const fiveSecondInterval = setInterval(async () => {
 pickUpButton.addEventListener("click", async (e) => {
   // console.log("inside listen");
   // e.preventDefault();
-  console.log("pickUpButton is clicked");
 
   // //mongoOrderID was got in EJS file
   // console.log(mongoOrderID);
