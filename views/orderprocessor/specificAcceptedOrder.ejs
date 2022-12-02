@@ -24,18 +24,24 @@
 
     <div class="parent">
       <div class="order-details">
-        <h3>Order <%= specificAcceptedOrder.orderID %></h3>
+        <h3>Order #<%= specificAcceptedOrder.orderID %></h3>
         <% const split = specificAcceptedOrder.pickUpTime.split(' ') %> 
         <p>
-          <strong>Pick up time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2] %>
+          <strong>Pick Up Time: </strong><%= split[0] %>:<%= split[1] %> <%= split[2] %>
         </p>
         <p>
           <strong>Pizza Type: </strong> <%= specificAcceptedOrder.pizzaType %>
         </p>
-        <p><strong>Toppings: </strong> <%= specificAcceptedOrder.toppings %></p>
+        <p><strong>Toppings: </strong></p>
+        <ul>
+          <% specificAcceptedOrder.toppings.forEach(topping => { %> 
+            <li><%= topping %></li>
+          <% }) %> 
+        </ul>
         <p>
-          <strong>Special Instructions: </strong> <%=
-          specificAcceptedOrder.specialInstructions %>
+          <strong>Special Instructions: </strong>
+          <br>
+          <%= specificAcceptedOrder.specialInstructions %>
         </p>
       </div>
 
@@ -55,7 +61,7 @@
         <% if (specificAcceptedOrder.orderStatus === "Ready to Pickup") { %>
         <button class="order-picked-up-button" id="order-picked-up-button">Order Picked Up</button>
         <% } else { %>
-        <button class="order-picked-up-button-disabled" id="order-picked-up-button" disabled>Order Picked Up</button>
+        <button class="order-picked-up-button" id="order-picked-up-button" disabled>Order Picked Up</button>
         <% } %>
       </div>
     </div>
