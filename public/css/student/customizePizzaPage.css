@@ -16,25 +16,26 @@
 
 .customizePizzaDivForm {
   width: 30%;
-  padding-left: 10%;
   background-color: maroon;
   color: white;
+  padding-left: 10%;
+  padding-top: 10%;
+  color: yellow;
+  font-size: 1.5rem;
+  }
 
-  /* want a black border on right */
-  border-right: 10px solid black;
-}
+
 
 /* both of these inside customizePizzaDivForm */
-.pizzaTypeDiv {
+/* .pizzaTypeDiv {
   display: block;
-  margin-top: 20%;
-  margin-bottom: 20px;
+  margin-top: 100%;
 }
+
 .toppingsOptionsDiv {
   display: block;
-  margin-top: 40%;
-  margin-bottom: 20%;
-}
+  margin-bottom: 100%;
+} */
 
 .pizzaDiagramDiv {
   display: grid;
@@ -60,4 +61,20 @@
   position: absolute;
   bottom: 2.5rem;
   right: 5rem;
+  background-color: maroon;
+  color: yellow;
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  border-radius: 100rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
+
+
+input[type=checkbox] {
+    accent-color: maroon;
+  }
+  input[type=radio] {
+    accent-color: maroon;
+  }
