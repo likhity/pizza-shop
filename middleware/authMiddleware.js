@@ -1,10 +1,11 @@
-const jwt = require("jsonwebtoken");
-const StudentUser = require("../models/StudentUser");
-const OrderProcessor = require("../models/OrderProcessor");
-const ChefUser = require("../models/ChefUser");
-require("dotenv").config();
+import jwt from "jsonwebtoken";
+import StudentUser from "../models/StudentUser.js";
+import OrderProcessor from "../models/OrderProcessor.js";
+import ChefUser from "../models/ChefUser.js";
+import dotenv from "dotenv";
+dotenv.config();
 
-const requireStudentAuth = async (req, res, next) => {
+export const requireStudentAuth = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   // check that jwt exists and is verified
@@ -32,7 +33,7 @@ const requireStudentAuth = async (req, res, next) => {
   }
 };
 
-const requireOrderProcessorAuth = async (req, res, next) => {
+export const requireOrderProcessorAuth = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   // check that jwt exists and is verified
@@ -60,7 +61,7 @@ const requireOrderProcessorAuth = async (req, res, next) => {
   }
 };
 
-const requireChefAuth = async (req, res, next) => {
+export const requireChefAuth = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   // check that jwt exists and is verified
@@ -86,10 +87,4 @@ const requireChefAuth = async (req, res, next) => {
   } else {
     res.redirect("/chef/login");
   }
-};
-
-module.exports = {
-  requireStudentAuth,
-  requireOrderProcessorAuth,
-  requireChefAuth,
 };

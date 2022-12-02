@@ -1,7 +1,7 @@
-const Order = require("../models/Order");
-const AcceptedOrder = require("../models/AcceptedOrder");
+import Order from "../models/Order.js";
+import AcceptedOrder from "../models/AcceptedOrder.js";
 
-module.exports = async (req, res, next) => {
+export default async (req, res, next) => {
 
   const { asuID: studentID } = res.locals;
 

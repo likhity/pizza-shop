@@ -1,28 +1,25 @@
-//schema requires
-const Order = require("../models/Order");
-const AcceptedOrder = require("../models/AcceptedOrder");
-const FinishedOrder = require("../models/FinishedOrder");
-const StudentUser = require("../models/StudentUser");
+//schema imports
+import Order from "../models/Order.js";
+import AcceptedOrder from "../models/AcceptedOrder.js";
+import ShortUniqueId from "short-unique-id";
 
-const ShortUniqueId = require("short-unique-id");
-
-module.exports.customize_pizza_get = (req, res) => {
+const customize_pizza_get = (req, res) => {
   res.render("student/customizePizzaPage");
 };
 
-module.exports.pickup_time_get = (req, res) => {
+const pickup_time_get = (req, res) => {
   res.render("student/pickUpTimePage");
 };
 
-module.exports.order_summary_get = (req, res) => {
+const order_summary_get = (req, res) => {
   res.render("student/orderSummaryPage");
 };
 
-module.exports.special_instructions_get = (req, res) => {
+const special_instructions_get = (req, res) => {
   res.render("student/specialInstructions");
 };
 
-module.exports.view_order_status_get = async (req, res) => {
+const view_order_status_get = async (req, res) => {
   const { asuID } = res.locals;
   const order =
       (await Order.findOne({ studentID: asuID })) ||
@@ -35,7 +32,7 @@ module.exports.view_order_status_get = async (req, res) => {
   }
 };
 
-module.exports.create_order_post = async (req, res) => {
+const create_order_post = async (req, res) => {
   try {
     const { pickUpTime, asuID, pizzaType, toppings, specialInstructions } =
       req.body;
@@ -63,7 +60,7 @@ module.exports.create_order_post = async (req, res) => {
   }
 };
 
-module.exports.cancel_order_delete = async (req, res) => {
+const cancel_order_delete = async (req, res) => {
   try {
     const { studentID } = req.body;
 
@@ -75,7 +72,7 @@ module.exports.cancel_order_delete = async (req, res) => {
   }
 };
 
-module.exports.order_status_get = async (req, res) => {
+const order_status_get = async (req, res) => {
   try {
     //we received orderID from client
     const { studentID } = req.params;
@@ -104,4 +101,15 @@ module.exports.order_status_get = async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false });
   }
+};
+
+export default {
+  customize_pizza_get,
+  pickup_time_get,
+  order_summary_get,
+  special_instructions_get,
+  view_order_status_get,
+  create_order_post,
+  cancel_order_delete,
+  order_status_get,
 };

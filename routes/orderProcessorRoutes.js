@@ -1,6 +1,6 @@
-const { Router } = require("express");
-const orderProcessorController = require("../controllers/orderProcessorController");
-const { requireOrderProcessorAuth } = require("../middleware/authMiddleware");
+import { Router } from "express";
+import orderProcessorController from "../controllers/orderProcessorController.js";
+import { requireOrderProcessorAuth } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
@@ -31,4 +31,4 @@ router.post("/accept-order", orderProcessorController.accept_order_post);
 router.post("/confirm-pickedup", orderProcessorController.confirm_pickedup_post);
 router.get("/order-status/:mongoOrderID", orderProcessorController.order_status_get);
 
-module.exports = router;
+export default router;

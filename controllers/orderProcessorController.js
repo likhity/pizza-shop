@@ -1,13 +1,12 @@
-const Order = require("../models/Order"); // New Orders
-const AcceptedOrder = require("../models/AcceptedOrder");
-const FinishedOrder = require("../models/FinishedOrder");
-const OrderProcessor = require("../models/OrderProcessor");
+import Order from "../models/Order.js"; // New Orders
+import AcceptedOrder from "../models/AcceptedOrder.js";
+import FinishedOrder from "../models/FinishedOrder.js";
 
 //==================================== PAGES =================================================
 
 //----------------------------------DONE-----------------------------------------------------------------------
 //needs to pass neworders object to page rendering
-module.exports.new_orders_get = async (req, res) => {
+const new_orders_get = async (req, res) => {
   //finds ALL orders of ORDER's database, sends results/errors, we render ejs page with that information
   Order.find()
     .then((results) => {
@@ -21,7 +20,7 @@ module.exports.new_orders_get = async (req, res) => {
 
 //----------------------------------DONE-----------------------------------------------------------------------
 
-module.exports.accepted_orders_get = async (req, res) => {
+const accepted_orders_get = async (req, res) => {
   //find all acceptedOrders
   AcceptedOrder.find()
     .then((results) => {
@@ -36,7 +35,7 @@ module.exports.accepted_orders_get = async (req, res) => {
 };
 //--------------------------------------------------------------------------------------------------------------
 
-module.exports.finished_orders_get = async (req, res) => {
+const finished_orders_get = async (req, res) => {
   try{
     const FinishedOrdersList = await FinishedOrder.find();
 
@@ -52,7 +51,7 @@ module.exports.finished_orders_get = async (req, res) => {
 
 //----------------------------------DONE-----------------------------------------------------------------------
 
-module.exports.individual_new_order_get = async (req, res) => {
+const individual_new_order_get = async (req, res) => {
   //this route come from "/individual-new-order/:orderID"
 
   //we recieve the MONGODB ID for the order and retrieve it from the parameter
@@ -73,7 +72,7 @@ module.exports.individual_new_order_get = async (req, res) => {
 };
 
 //need to send myself the individual acceptedOrder to "specificAcceptedOrder" ejs
-module.exports.individual_accepted_order_get = async (req, res) => {
+const individual_accepted_order_get = async (req, res) => {
   //we recieve MONGO NEWORDER ID in URL PARAMETERS
   const thisMongoOrderID = req.params.orderID;
 
@@ -90,7 +89,7 @@ module.exports.individual_accepted_order_get = async (req, res) => {
     });
 };
 
-module.exports.individual_finished_order_get = async (req, res) => {
+const individual_finished_order_get = async (req, res) => {
 
   try {
     const orderID = req.params.orderID;
@@ -107,7 +106,7 @@ module.exports.individual_finished_order_get = async (req, res) => {
 
 //==============================================================================================
 
-module.exports.accept_order_post = async (req, res) => {
+const accept_order_post = async (req, res) => {
   try {
     //get orderID
     //since post we get information in body
@@ -144,7 +143,7 @@ module.exports.accept_order_post = async (req, res) => {
   }
 };
 
-module.exports.confirm_pickedup_post = async (req, res) => {
+const confirm_pickedup_post = async (req, res) => {
   try {
     const { mongoOrderID } = req.body;
 
@@ -179,7 +178,7 @@ module.exports.confirm_pickedup_post = async (req, res) => {
   }
 };
 
-module.exports.order_status_get = async (req, res) => {
+const order_status_get = async (req, res) => {
   try {
     //get mongoOrderID from url parameter (mongoOrderID)
     const mongoOrderID = req.params.mongoOrderID;
@@ -191,4 +190,16 @@ module.exports.order_status_get = async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false });
   }
+};
+
+export default {
+  new_orders_get,
+  accepted_orders_get,
+  finished_orders_get,
+  individual_new_order_get,
+  individual_accepted_order_get,
+  individual_finished_order_get,
+  accept_order_post,
+  confirm_pickedup_post,
+  order_status_get,
 };

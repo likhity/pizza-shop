@@ -1,9 +1,6 @@
-const Order = require("../models/Order");
-const AcceptedOrder = require("../models/AcceptedOrder");
-const FinishedOrder = require("../models/FinishedOrder");
-const ChefUser = require("../models/ChefUser");
+import AcceptedOrder from "../models/AcceptedOrder.js";
 
-module.exports.order_list_get = async (req, res) => {
+const order_list_get = async (req, res) => {
 
   try {
 
@@ -15,7 +12,7 @@ module.exports.order_list_get = async (req, res) => {
   }
 
 };
-module.exports.individual_order_get = async (req, res) => {
+const individual_order_get = async (req, res) => {
   try {
   const thisOrderID = req.params.orderID;
   
@@ -30,7 +27,7 @@ module.exports.individual_order_get = async (req, res) => {
 
 //============================= ORDER STATUS ======================================================
 
-module.exports.confirm_ready_to_cook_post = async (req, res) => {
+const confirm_ready_to_cook_post = async (req, res) => {
   try {
     const orderID = req.body.orderID;
 
@@ -43,7 +40,7 @@ module.exports.confirm_ready_to_cook_post = async (req, res) => {
   }
 }
 
-module.exports.confirm_cooking_post = async (req, res) => {
+const confirm_cooking_post = async (req, res) => {
   try {
     const { orderID } = req.body;
 
@@ -56,7 +53,7 @@ module.exports.confirm_cooking_post = async (req, res) => {
   }
 };
 
-module.exports.confirm_ready_to_pickup_post = async (req, res) => {
+const confirm_ready_to_pickup_post = async (req, res) => {
   try {
     const { orderID } = req.body;
 
@@ -69,7 +66,7 @@ module.exports.confirm_ready_to_pickup_post = async (req, res) => {
   }
 };
 
-module.exports.order_status_get = async (req, res) => {
+const order_status_get = async (req, res) => {
   try {
     const { orderID } = req.body;
 
@@ -79,4 +76,13 @@ module.exports.order_status_get = async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false });
   }
+};
+
+export default {
+  order_list_get,
+  order_status_get,
+  individual_order_get,
+  confirm_ready_to_cook_post,
+  confirm_cooking_post,
+  confirm_ready_to_pickup_post,
 };

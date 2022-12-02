@@ -1,11 +1,12 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const authRoutes = require("./routes/authRoutes");
-const studentRoutes = require("./routes/studentRoutes");
-const orderProcessorRoutes = require("./routes/orderProcessorRoutes");
-const chefRoutes = require("./routes/chefRoutes");
-const cookieParser = require("cookie-parser");
-require("dotenv").config();
+import express from "express";
+import mongoose from "mongoose";
+import authRoutes from "./routes/authRoutes.js";
+import studentRoutes from "./routes/studentRoutes.js";
+import orderProcessorRoutes from "./routes/orderProcessorRoutes.js";
+import chefRoutes from "./routes/chefRoutes.js";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -43,3 +44,5 @@ app.use("/chef", chefRoutes);
 app.use((req, res) => {
   res.status(404).render("404");
 })
+
+export default app;

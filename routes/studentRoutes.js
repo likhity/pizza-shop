@@ -1,7 +1,7 @@
-const { Router } = require("express");
-const studentController = require("../controllers/studentController");
-const { requireStudentAuth } = require("../middleware/authMiddleware");
-const checkStudentHasOrder = require("../middleware/checkStudentHasOrder");
+import { Router } from "express";
+import studentController from "../controllers/studentController.js";
+import { requireStudentAuth } from "../middleware/authMiddleware.js";
+import checkStudentHasOrder  from "../middleware/checkStudentHasOrder.js";
 
 const router = Router();
 
@@ -28,4 +28,4 @@ router.post("/create-order", studentController.create_order_post);
 router.delete("/cancel-order", studentController.cancel_order_delete);
 router.get("/order-status/:studentID", studentController.order_status_get);
 
-module.exports = router;
+export default router;

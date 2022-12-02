@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -30,4 +30,4 @@ orderProcessorSchema.statics.login = async function (username, password) {
 
 const orderProcessor = mongoose.model("orderprocessor", orderProcessorSchema);
 
-module.exports = orderProcessor;
+export default orderProcessor;

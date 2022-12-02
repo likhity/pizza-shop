@@ -1,5 +1,5 @@
-const { Router } = require("express");
-const authController = require("../controllers/authController");
+import { Router } from "express";
+import authController from "../controllers/authController.js";
 
 const router = Router();
 
@@ -11,4 +11,4 @@ router.get("/chef/login", authController.chef_login_get);
 router.post("/chef/login", authController.chef_login_post);
 router.get("/logout", authController.logout);
 
-module.exports = router;
+export default router;

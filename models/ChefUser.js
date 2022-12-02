@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -30,4 +30,4 @@ chefUserSchema.statics.login = async function (username, password) {
 
 const chefUser = mongoose.model("chefuser", chefUserSchema);
 
-module.exports = chefUser;
+export default chefUser;

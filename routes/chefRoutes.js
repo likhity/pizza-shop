@@ -1,6 +1,6 @@
-const { Router } = require("express");
-const chefController = require("../controllers/chefController");
-const { requireChefAuth } = require("../middleware/authMiddleware");
+import { Router } from "express";
+import chefController from "../controllers/chefController.js";
+import { requireChefAuth } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
@@ -18,4 +18,4 @@ router.post("/confirm-cooking", chefController.confirm_cooking_post);
 router.post("/confirm-ready-to-pickup", chefController.confirm_ready_to_pickup_post);
 router.get("/order-status/:orderID", chefController.order_status_get);
 
-module.exports = router;
+export default router;
