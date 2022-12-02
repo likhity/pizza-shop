@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>customizePizza</title>
+    <title>Customize Pizza</title>
     
     <script src="/customizePizza.js" defer></script>
     <link rel="stylesheet" href="/css/student/customizePizzaPage.css">
@@ -12,7 +12,10 @@
 
 
 
-  <body >
+  <body>
+
+    <p class="welcome-text">Welcome, <%= locals.asuID %>.</p>
+
     <div class="entirePizzaPageDiv">
 
 
@@ -50,7 +53,7 @@
           <img src="/toppings/olives.png" id="olives-img" alt="topping" class="topping olive invisible">
 
             <!-- need to save object of pizza created to continue -->
-          <button class="next-btn" id="nextBtn"type="next">NEXT</button>
+          <button class="next-btn" id="nextBtn"type="next"><b>Next</b></button>
 
 
          </div>

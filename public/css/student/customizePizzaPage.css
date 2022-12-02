@@ -2,6 +2,14 @@
 
 /* All styles unique to customizePizzaPage */
 
+.welcome-text {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  margin: 0;
+  color: var(--maroon);
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -20,7 +28,7 @@
   color: white;
   padding-left: 10%;
   padding-top: 10%;
-  color: yellow;
+  color: var(--gold);
   font-size: 1.5rem;
   }
 
@@ -61,8 +69,8 @@
   position: absolute;
   bottom: 2.5rem;
   right: 5rem;
-  background-color: maroon;
-  color: yellow;
+  background-color: var(--maroon);
+  color: var(--gold);
   border: none;
   outline: none;
   padding: 1rem 2rem;
@@ -70,11 +78,15 @@
   font-size: 1rem;
   font-weight: 600;
 }
+.next-btn:hover {
+  background-color: var(--gold);
+  color: var(--maroon);
+}
 
 
 input[type=checkbox] {
-    accent-color: maroon;
+    accent-color: var(--maroon);
   }
   input[type=radio] {
-    accent-color: maroon;
+    accent-color: var(--maroon);
   }
