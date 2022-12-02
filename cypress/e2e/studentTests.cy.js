@@ -24,3 +24,21 @@ describe('Student Login', () => {
     cy.getCookie("jwt").should("exist");
   })
 });
+
+describe("Customize Pizza Page", () => {
+  it("Correctly renders pizza diagram if Pepperoni selected", () => {
+    cy.get("input[value='Pepperoni']").check();
+
+    cy.get("img.pizzaType").should("have.attr", "src", "/pizzaType/Pepperoni.png");
+  });
+  it("Correctly renders pizza diagram if Vegetable selected", () => {
+    cy.get("input[value='Vegetable']").check();
+
+    cy.get("img.pizzaType").should("have.attr", "src", "/pizzaType/Vegetable.png");
+  })
+  it("Correctly renders pizza diagram if Cheese selected", () => {
+    cy.get("input[value='Cheese']").check();
+
+    cy.get("img.pizzaType").should("have.attr", "src", "/pizzaType/Cheese.png");
+  })
+})

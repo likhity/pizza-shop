@@ -1,3 +1,3 @@
-import "./studentLogin.cy";
-import "./orderProcessorLogin.cy";
-import "./chefLogin.cy";
+import "./studentTests.cy";
+import "./orderProcessorTests.cy";
+import "./chefTests.cy";
